@@ -1,6 +1,8 @@
-export interface Response {
+import { AuthResponseInterface } from "../../auth/types/authResponse.interface";
+
+export interface ResponseAPI {
     statusCode: number,
-    data: any,
+    data: AuthResponseInterface,
     message: string,
     success: boolean
 }

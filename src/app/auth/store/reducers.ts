@@ -19,11 +19,10 @@ const authFeature = createFeature({
             isSubmitting: true,
             validationErrors: null
         })),
-        // on(authActions.registerSuccess, (state, action) => ({
-        //     ...state,
-        //     isSubmitting: false,
-        //     currentUser: action.currentUser
-        // })),
+        on(authActions.registerSuccess, (state) => ({
+            ...state,
+            isSubmitting: false,
+        })),
         on(authActions.registerFailure, (state, action) => ({
             ...state,
             isSubmitting: false,

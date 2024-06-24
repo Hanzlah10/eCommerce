@@ -7,7 +7,6 @@ import { RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterRequestInterface } from '../../types/registerRequest.interface';
 import { authActions } from '../../store/actions';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -18,9 +17,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent {
 
-
-  constructor(private store: Store, private fb: FormBuilder, private authSrive: AuthService) { }
-
+  constructor(private store: Store, private fb: FormBuilder) { }
 
   form = this.fb.nonNullable.group({
     username: ['', Validators.required],
@@ -28,7 +25,6 @@ export class RegisterComponent {
     email: ['', Validators.required],
     role: ['', Validators.required]
   })
-
 
   $data = combineLatest({
     isSubmitting$: this.store.select(selectIsSubmitting),
@@ -38,9 +34,6 @@ export class RegisterComponent {
   onSubmit() {
     const request: RegisterRequestInterface = this.form.getRawValue()
     console.log(request);
-    // this.store.dispatch(authActions.register({ request }))
-    this.authSrive.registerUser(request).subscribe((data) => {
-      console.log(data.email);
-    })
+    this.store.dispatch(authActions.register({ request }))
   }
 }
