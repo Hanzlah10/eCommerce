@@ -5,6 +5,7 @@ import { AuthResponseInterface } from '../types/authResponse.interface';
 import { CurrentUserInterface } from '../../Shared/types/currentUser.interface';
 import { RegisterRequestInterface } from '../types/registerRequest.interface';
 import { Observable, map } from 'rxjs';
+import { LoginRequestInterface } from '../types/loginRequest.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,12 @@ export class AuthService {
   }
 
   registerUser(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
-    let url = environment.apiUrl + 'users/register';
+    let url = "https://api.freeapi.app/api/v1/users/register"
     return this.http.post<AuthResponseInterface>(url, data).pipe(map(this.getUser))
+  }
+
+  loginUser(data: LoginRequestInterface): Observable<AuthResponseInterface> {
+    let url = environment.apiUrl + '/users/login';
+    return this.http.post<AuthResponseInterface>(url, data)
   }
 }

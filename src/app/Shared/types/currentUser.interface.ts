@@ -5,14 +5,16 @@ export interface Avatar {
 }
 
 export interface CurrentUserInterface {
+    __v: number;
     _id: string;
     avatar: Avatar;
-    username: string;
-    email: string;
-    role: string;
-    loginType: string;
-    isEmailVerified: boolean;
     createdAt: string;
+    email: string;
+    isEmailVerified: boolean;
+    loginType: string;
+    role: string;
     updatedAt: string;
-    __v: number;
+    username: string;
 }
+
+
