@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { FloatLabelModule } from 'primeng/floatlabel';
+import { PrimengModule } from './primeng/primeng.module';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ButtonModule, FloatLabelModule],
+  imports: [CommonModule, RouterOutlet, PrimengModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
