@@ -4,12 +4,13 @@ import { NavbarComponent } from '../../Shared/components/navbar/navbar.component
 import { Store } from '@ngrx/store';
 import { CategoryCardComponent } from '../../Shared/components/category-card/category-card.component';
 import { categoryService } from '../services/category.service';
+import { PaginationComponent } from '../../Shared/components/pagination/pagination.component';
 
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [NavbarComponent, CategoryCardComponent],
+  imports: [NavbarComponent, CategoryCardComponent, PaginationComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
@@ -23,6 +24,11 @@ export class LandingPageComponent implements OnInit {
     let data$ = this.cater.getAllCategories(1, 4).subscribe(data => (data))
   }
 
+  currentPage = 1;
+
+  changePage(page: number): void {
+    this.currentPage = page;
+  }
 
 
 

@@ -1,4 +1,4 @@
 <app-navbar></app-navbar>
 
-
+<pagination [currentPage]="currentPage" [limit]="20" [total]="100" (changePage)="changePage($event)"></pagination>
 <app-category-card></app-category-card>

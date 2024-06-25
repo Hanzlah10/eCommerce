@@ -8,8 +8,7 @@ export interface CategoryInterface {
 }
 
 
-export interface Pagination {
-
+export interface PaginationInterface {
     categories: CategoryInterface[];
     hasNextPage: boolean;
     hasPrevPage: boolean;

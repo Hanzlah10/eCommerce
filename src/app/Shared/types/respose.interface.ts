@@ -1,5 +1,5 @@
 import { AuthResponseInterface } from "../../auth/types/authResponse.interface";
-import { CategoryInterface, Pagination } from "./category.interface";
+import { PaginationInterface } from "./category.interface";
 
 export interface ResponseAPI {
     statusCode: number,
@@ -10,7 +10,7 @@ export interface ResponseAPI {
 
 export interface ResponseCategoryAPI {
     statusCode: number,
-    data: Pagination,
+    data: PaginationInterface,
     message: string,
     success: boolean
 }

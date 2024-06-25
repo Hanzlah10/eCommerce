@@ -13,6 +13,13 @@ export class CategoryCardComponent {
 
   @Input() Category !: CategoryInterface
 
-
+  // Category: CategoryInterface = {
+  //   __v: 0,
+  //   _id: "649e792a64e7dba29b7265fc",
+  //   createdAt: "2023-06-30T06:41:46.367Z",
+  //   name: "sleek",
+  //   owner: "649e792964e7dba29b72634a",
+  //   updatedAt: "2023-06-30T06:41:46.367Z"
+  // }
 
 }
