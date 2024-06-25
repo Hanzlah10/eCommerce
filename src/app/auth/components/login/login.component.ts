@@ -8,8 +8,7 @@ import { LoginRequestInterface } from '../../types/loginRequest.interface';
 import { authActions } from '../../store/actions';
 import { combineLatest } from 'rxjs';
 import { selectIsSubmitting, selectValidationErrors } from '../../store/reducers';
-import { AuthService } from '../../services/auth.service';
-import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-login',
@@ -36,7 +35,7 @@ export class LoginComponent {
 
   onSubmit() {
     const request: LoginRequestInterface = this.form.getRawValue()
-    console.log(request);
+    // console.log(request);
     this.store.dispatch(authActions.login({ request }))
   }
 
