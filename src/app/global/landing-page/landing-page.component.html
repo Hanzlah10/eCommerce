@@ -1,4 +1,17 @@
-<app-navbar></app-navbar>
+<div>
+    <div class="category-cards grid grid-cols-5 ">
+        <div *ngFor="let category of categories">
+            <app-category-card [Category]="category"></app-category-card>
+        </div>
+    </div>
+</div>
+<!-- 
+<pagination [currentPage]="currentPage" [limit]="limit" [total]="totalPages" (changePage)="changePage($event)">
+</pagination> -->
 
-<pagination [currentPage]="currentPage" [limit]="20" [total]="100" (changePage)="changePage($event)"></pagination>
-<app-category-card></app-category-card>
+
+
+
+<!-- @for(category of categories; track category) { -->
+
+<!-- } -->
