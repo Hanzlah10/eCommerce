@@ -9,6 +9,7 @@ import { authActions } from '../../store/actions';
 import { combineLatest } from 'rxjs';
 import { selectIsSubmitting, selectValidationErrors } from '../../store/reducers';
 import { AuthService } from '../../services/auth.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
 
 
-  constructor(private store: Store, private fb: FormBuilder, private autserive: AuthService) { }
+  constructor(private store: Store, private fb: FormBuilder) { }
 
   form = this.fb.nonNullable.group({
     username: ['', Validators.required],
@@ -36,11 +37,12 @@ export class LoginComponent {
   onSubmit() {
     const request: LoginRequestInterface = this.form.getRawValue()
     console.log(request);
-    // this.autserive.loginUser(request).subscribe((data) => {
-    //   console.log(data);
-    // })
     this.store.dispatch(authActions.login({ request }))
   }
+
+  // showSuccess() {
+  //   this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content', life: 10000 });
+  // }
 }
 
 

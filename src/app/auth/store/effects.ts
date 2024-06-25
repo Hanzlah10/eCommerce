@@ -7,6 +7,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { PersistenceService } from "../../Shared/services/persistence.service";
 import { AuthResponseInterface } from "../types/authResponse.interface";
+import { MessageService } from "primeng/api";
 
 export const registerEffects = createEffect(
     (
@@ -33,7 +34,6 @@ export const registerEffects = createEffect(
     },
     { functional: true }
 );
-
 
 export const loginEffect = createEffect(
     (
@@ -83,11 +83,13 @@ export const redirectAfterLoginEffect = createEffect(
     { functional: true, dispatch: false }
 );
 
+
 export const redirectAfterRegisterEffect = createEffect(
-    (actions$ = inject(Actions), router = inject(Router)) => {
+    (actions$ = inject(Actions), router = inject(Router), messageService = inject(MessageService)) => {
         return actions$.pipe(
             ofType(authActions.registerSuccess),
             tap(() => {
+                messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content', life: 10000 });
                 router.navigateByUrl('/login');
             })
         );
