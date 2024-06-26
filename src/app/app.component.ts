@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { PrimengModule } from './Modules/primeng.module';
 import { NavbarComponent } from './Shared/components/navbar/navbar.component';
+import { Store } from '@ngrx/store';
+import { selectCurrentUser } from './auth/store/reducers';
+import { CurrentUserInterface } from './Shared/types/currentUser.interface';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +16,8 @@ import { NavbarComponent } from './Shared/components/navbar/navbar.component';
 })
 export class AppComponent {
   title = 'eCommerce';
+  constructor(public router: Router) {
+
+  }
+
 }
