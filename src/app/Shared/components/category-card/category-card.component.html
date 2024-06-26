@@ -1,13 +1,6 @@
 <ng-container *ngIf="Category">
-    <div class="card flex justify-content-center m-5">
-        <p-card>
-            <!-- <p-card [header]="Category.name"> -->
-            <!-- <p class="m-0">
-                {{Category.owner}}
-                {{Category.updatedAt}}
-                {{Category.createdAt}}
-            </p> -->
-            <h1 class="font-bold">{{Category.name}}</h1>
-        </p-card>
+    <div
+        class="card flex justify-content-center items-center m-5 p-5 shadow-lg rounded-lg bg-blue-700 hover:shadow-slate-700 hover:shadow-2xl">
+        <h3 class="text-sm font-semibold text-white uppercase ">{{Category.name}}</h3>
     </div>
 </ng-container>

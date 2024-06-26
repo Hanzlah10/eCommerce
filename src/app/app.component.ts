@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet } from '@angular/router';
 import { PrimengModule } from './Modules/primeng.module';
 import { NavbarComponent } from './Shared/components/navbar/navbar.component';
-import { Store } from '@ngrx/store';
-import { selectCurrentUser } from './auth/store/reducers';
-import { CurrentUserInterface } from './Shared/types/currentUser.interface';
+import { FooterComponent } from './Shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, PrimengModule, NavbarComponent],
+  imports: [CommonModule, RouterOutlet, PrimengModule, NavbarComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

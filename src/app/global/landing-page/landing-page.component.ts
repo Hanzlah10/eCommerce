@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../../Shared/components/navbar/navbar.component';
-
 import { Store } from '@ngrx/store';
 import { CategoryCardComponent } from '../../Shared/components/category-card/category-card.component';
 import { categoryService } from '../services/category.service';
-import { PaginationComponent } from '../../Shared/components/pagination/pagination.component';
 import { CategoryInterface } from '../../Shared/types/category.interface';
 import { CommonModule } from '@angular/common';
-
-
+import { CarouselComponent } from '../../Shared/components/carousel/carousel.component';
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [NavbarComponent, CategoryCardComponent, CommonModule],
+  imports: [NavbarComponent, CategoryCardComponent, CommonModule,CarouselComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
@@ -40,6 +37,7 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCategories();
+
   }
 
   loadCategories(): void {
