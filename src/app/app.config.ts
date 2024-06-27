@@ -9,17 +9,22 @@ import * as authEffects from './auth/store/effects'
 import { authFeatureKey, authReducer } from './auth/store/reducers';
 import { MessageService } from 'primeng/api';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { productFeatureKey, productReducer } from './Shared/components/products page/store/reducers';
+import * as ProductsEffect from './Shared/components/products page/store/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
     provideStore(),
-    provideEffects(authEffects),
+    provideEffects(authEffects, ProductsEffect),
     provideState(authFeatureKey, authReducer),
+    provideState(productFeatureKey, productReducer),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     MessageService,
-    provideAnimations()
+    provideAnimations(),
+
+
   ]
 };
 

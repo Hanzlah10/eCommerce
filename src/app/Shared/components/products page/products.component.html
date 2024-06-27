@@ -1,1 +1,8 @@
-<p>products works!</p>
+<ng-container *ngIf="products$ | async as products" class="">
+    <div
+        class=" p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 grid gap-6  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 dark:bg-black">
+        <div *ngFor="let product of products">
+            <app-product [product]="product"></app-product>
+        </div>
+    </div>
+</ng-container>

@@ -27,4 +27,9 @@ const productsFeature = createFeature({
     )
 })
 
-export const { name: productFeatureJey, reducer: productResducer, selectCategory, selectErrors, selectProducts } = productsFeature
+export const {
+    name: productFeatureKey,
+    reducer: productReducer,
+    selectCategory, selectErrors,
+    selectProducts }
+    = productsFeature
