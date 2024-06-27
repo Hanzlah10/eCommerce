@@ -6,10 +6,11 @@ import { categoryService } from '../services/category.service';
 import { CategoryInterface } from '../../Shared/types/category.interface';
 import { CommonModule } from '@angular/common';
 import { CarouselComponent } from '../../Shared/components/carousel/carousel.component';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [NavbarComponent, CategoryCardComponent, CommonModule,CarouselComponent],
+  imports: [NavbarComponent, CategoryCardComponent, CommonModule, CarouselComponent, RouterLink],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })

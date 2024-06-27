@@ -14,7 +14,7 @@ export const routes: Routes = [
         loadChildren: () => import('./auth/auth.routes').then(m => m.registerRoutes)
     },
     {
-        path: 'products/category/:categoryId',
+        path: 'products/:categoryId',
         loadChildren: () => import('./Shared/components/products page/products.routes').then(m => m.ProductsRoutes)
     }
 
