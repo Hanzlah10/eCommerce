@@ -1,6 +1,6 @@
 import { AuthResponseInterface } from "../../auth/types/authResponse.interface";
 import { ProductInterface, ProductsByCategoryWithPagination } from "../../products page/types/products.interface";
-import { PaginationInterface } from "./category.interface";
+import { CategoryInterface, PaginationInterface } from "./category.interface";
 
 export interface ResponseAPI {
     statusCode: number,
@@ -27,6 +27,14 @@ export interface ResponseSingleProductAPI {
     message: string,
     success: boolean
 }
+export interface ResponseSingleCategoryAPI {
+    statusCode: number,
+    data: CategoryInterface,
+    message: string,
+    success: boolean
+}
+
+
 
 
 
