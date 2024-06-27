@@ -1,8 +1,9 @@
 <ng-container *ngIf="$data | async as data">
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8  dark:bg-black">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="mx-auto h-10 w-auto" src="https://flowbite.com/docs/images/logo.svg" alt="Your Company">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Register your
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">
+                Register your
                 account
             </h2>
         </div>
@@ -15,7 +16,8 @@
                         </p> -->
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div class="sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">
+                                <label for="first-name"
+                                    class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                                     username</label>
                                 <div class="mt-2">
                                     <input type="text" name="first-name" id="first-name" autocomplete="given-name"
@@ -26,7 +28,7 @@
 
                             <div class="sm:col-span-3">
                                 <label for="last-name"
-                                    class="block text-sm font-medium leading-6 text-gray-900">Password
+                                    class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Password
                                 </label>
                                 <div class="mt-2">
                                     <input id="password" name="password" type="password" autocomplete="current-password"
@@ -36,7 +38,8 @@
                             </div>
 
                             <div class="sm:col-span-6">
-                                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email
+                                <label for="email"
+                                    class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Email
                                     address</label>
                                 <div class="mt-2">
                                     <input id="email" name="email" formControlName="email" type="email"
@@ -46,11 +49,11 @@
                             </div>
 
                             <div class="sm:col-span-3">
-                                <p class="mt-1 text-sm leading-6 text-gray-900"> Select the role.
+                                <p class="mt-1 text-sm leading-6 text-gray-900 dark:text-white"> Select the role.
                                 </p>
                                 <div class="mt-2">
                                     <select id="role" name="role" autocomplete="role-name"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-700 sm:max-w-xs sm:text-sm sm:leading-6"
+                                        class="block w-full rounded-md border-0 py-1.5 dark:text-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-700 sm:max-w-xs sm:text-sm sm:leading-6"
                                         formControlName="role">
                                         <option>ADMIN</option>
                                         <option>USER</option>

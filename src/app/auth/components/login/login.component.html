@@ -1,8 +1,9 @@
 <ng-container *ngIf="$data | async as data">
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 dark:bg-black">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="mx-auto h-10 w-auto" src="https://flowbite.com/docs/images/logo.svg" alt="Your Company">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">Sign
+                in to your
                 account
             </h2>
         </div>
@@ -10,7 +11,8 @@
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form class="space-y-6" [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div>
-                    <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+                    <label for="username"
+                        class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Username</label>
                     <div class="mt-2">
                         <input id="username" name="username" type="username" autocomplete="username" required
                             formControlName="username"
@@ -20,9 +22,11 @@
 
                 <div>
                     <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                        <label for="password"
+                            class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Password</label>
                         <div class="text-sm">
-                            <a href="" class="font-semibold text-blue-700 hover:text-blue-500">Forgot password?</a>
+                            <a href="" class="font-semibold text-blue-700 hover:text-blue-500">Forgot
+                                password?</a>
                         </div>
                     </div>
                     <div class="mt-2">
