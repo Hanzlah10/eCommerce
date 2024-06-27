@@ -15,7 +15,11 @@ export const routes: Routes = [
     },
     {
         path: 'products/:categoryId',
-        loadChildren: () => import('./Shared/components/products page/products.routes').then(m => m.ProductsRoutes)
+        loadChildren: () => import('./products page/products.routes').then(m => m.ProductsRoutes)
+    },
+    {
+        path: 'product/:productId',
+        loadChildren: () => import('./Shared/components/single-product/single-prod.routes').then(m => m.SingleProdRoute)
     }
 
 ];

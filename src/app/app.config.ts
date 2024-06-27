@@ -9,8 +9,8 @@ import * as authEffects from './auth/store/effects'
 import { authFeatureKey, authReducer } from './auth/store/reducers';
 import { MessageService } from 'primeng/api';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { productFeatureKey, productReducer } from './Shared/components/products page/store/reducers';
-import * as ProductsEffect from './Shared/components/products page/store/effects';
+import { productFeatureKey, productReducer } from './products page/store/reducers';
+import * as ProductsEffect from './products page/store/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [

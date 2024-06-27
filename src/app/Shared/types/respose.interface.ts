@@ -1,5 +1,5 @@
 import { AuthResponseInterface } from "../../auth/types/authResponse.interface";
-import { ProductInterface, ProductsByCategoryWithPagination } from "../components/products page/types/products.interface";
+import { ProductInterface, ProductsByCategoryWithPagination } from "../../products page/types/products.interface";
 import { PaginationInterface } from "./category.interface";
 
 export interface ResponseAPI {

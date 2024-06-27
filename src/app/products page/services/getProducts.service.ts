@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { environment } from "../../../../../environments/environment.development";
+import { environment } from "../../../environments/environment.development";
 import { Observable, map } from "rxjs";
-import { ResponseProductsAPI } from "../../../types/respose.interface";
+import { ResponseProductsAPI } from "../../Shared/types/respose.interface";
 import { ProductInterface, ProductsByCategoryWithPagination } from "../types/products.interface";
 
 @Injectable({

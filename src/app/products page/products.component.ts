@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProductsByCategoryAction } from './store/actions';
 import { combineLatest } from 'rxjs';
 import { selectCategory, selectProducts } from './store/reducers';
-import { productComponent } from '../products/product.component';
+import { productComponent } from '../Shared/components/products/product.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [productComponent, CommonModule],
+  imports: [productComponent, CommonModule, RouterLink],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })

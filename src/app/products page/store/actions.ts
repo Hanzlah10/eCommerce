@@ -1,6 +1,6 @@
 import { createActionGroup, props } from "@ngrx/store";
 import { ProductsByCategoryWithPagination } from "../types/products.interface";
-import { BackendErrorsInterface } from "../../../types/backendErrors.interface";
+import { BackendErrorsInterface } from "../../Shared/types/backendErrors.interface";
 
 export const ProductsByCategoryAction = createActionGroup({
     source: 'ProductsByCategory',

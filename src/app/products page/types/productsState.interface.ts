@@ -1,4 +1,4 @@
-import { BackendErrorsInterface } from "../../../types/backendErrors.interface";
+import { BackendErrorsInterface } from "../../Shared/types/backendErrors.interface";
 import { ProductInterface } from "./products.interface";
 
 export interface productsStateInterface {
