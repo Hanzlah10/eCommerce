@@ -21,6 +21,12 @@ export interface ResponseProductsAPI {
     message: string,
     success: boolean
 }
+export interface ResponseSingleProductAPI {
+    statusCode: number,
+    data: ProductInterface,
+    message: string,
+    success: boolean
+}
 
 
 
