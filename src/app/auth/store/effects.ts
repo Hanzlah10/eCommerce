@@ -40,16 +40,15 @@ export const loginEffect = createEffect(
         authService = inject(AuthService),
         actions$ = inject(Actions),
         persistenceService = inject(PersistenceService),
-        router = inject(Router)
     ) => {
         return actions$.pipe(
             ofType(authActions.login),
             switchMap(({ request }) => {
                 return authService.loginUser(request).pipe(
                     map((authResponse: AuthResponseInterface) => {
-                        console.log(authResponse);
+                        // console.log(authResponse);
 
-                        console.log(authResponse.refreshToken + " refresh token");
+                        // console.log(authResponse.refreshToken + " refresh token");
                         persistenceService.set('accessToken', authResponse.accessToken);
                         persistenceService.set('refreshToken', authResponse.refreshToken);
                         return authActions.loginSuccess({ currentUser: authResponse.user })
