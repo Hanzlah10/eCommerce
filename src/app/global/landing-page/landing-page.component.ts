@@ -7,6 +7,8 @@ import { CategoryInterface } from '../../Shared/types/category.interface';
 import { CommonModule } from '@angular/common';
 import { CarouselComponent } from '../../Shared/components/carousel/carousel.component';
 import { RouterLink } from '@angular/router';
+import { getCurrentUserEffect } from '../../auth/store/effects';
+import { authActions } from '../../auth/store/actions';
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -38,7 +40,6 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCategories();
-
   }
 
   loadCategories(): void {
@@ -48,6 +49,7 @@ export class LandingPageComponent implements OnInit {
       // this.currentPage = data.page;
       console.log(data);  // Process the data as needed
       console.log(this.categories);
+      // this.store.dispatch(authActions.getCurrentUser())
 
     });
   }

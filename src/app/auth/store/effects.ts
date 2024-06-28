@@ -47,6 +47,8 @@ export const loginEffect = createEffect(
             switchMap(({ request }) => {
                 return authService.loginUser(request).pipe(
                     map((authResponse: AuthResponseInterface) => {
+                        console.log(authResponse);
+
                         persistenceService.set('accessToken', authResponse.accessToken);
                         persistenceService.set('refreshToken', authResponse.refreshToken);
                         return authActions.loginSuccess({ currentUser: authResponse.user })

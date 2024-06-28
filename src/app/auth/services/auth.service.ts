@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { AuthResponseInterface } from '../types/authResponse.interface';
@@ -21,20 +21,33 @@ export class AuthService {
 
   registerUser(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
     let url = environment.apiUrl + '/users/register';
-    return this.http.post<ResponseAPI>(url, data).pipe(map((res => this.getUser(res.data))))
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const options = { headers };
+
+    return this.http.post<ResponseAPI>(url, data, options).pipe(map((res => this.getUser(res.data))))
   }
 
   loginUser(data: LoginRequestInterface): Observable<AuthResponseInterface> {
     let url = environment.apiUrl + '/users/login';
-    return this.http.post<ResponseAPI>(url, data).pipe(map(res => res.data))
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const options = { headers };
+    return this.http.post<ResponseAPI>(url, data, options).pipe(map(res => res.data))
   }
   getCurrentUser(): Observable<CurrentUserInterface> {
     const url = `${environment.apiUrl}/users/current-user`
     console.log(url);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const options = { headers };
     return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser))
   }
 
 }
-
-
-// http://localhost:8080/api/v1/users/current-user
