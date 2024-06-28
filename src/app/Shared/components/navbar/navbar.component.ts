@@ -25,6 +25,7 @@ export class NavbarComponent {
 
   toggleCart() {
     this.isCartVisible = !this.isCartVisible;
+
   }
 
   onCartToggle(isVisible: boolean) {

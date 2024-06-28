@@ -14,6 +14,7 @@ import * as ProductsEffect from './products page/store/effects';
 import * as SingleProductsEffect from './single-product/store/effects';
 import { singleProdFeatureKey, singleProdReducer } from './single-product/store/reducers';
 import { authInterceptor } from './Shared/services/authInterceptor';
+import { cartFeatureKey, cartReducer } from './Shared/components/cart/store/reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,6 +26,7 @@ export const appConfig: ApplicationConfig = {
     provideState(authFeatureKey, authReducer),
     provideState(productFeatureKey, productReducer),
     provideState(singleProdFeatureKey, singleProdReducer),
+    provideState(cartFeatureKey, cartReducer),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     MessageService,
     provideAnimations(),
