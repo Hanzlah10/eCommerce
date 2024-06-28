@@ -1,5 +1,5 @@
 <ng-container *ngIf="$data | async as data">
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8  dark:bg-black">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8  dark:bg-black ">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="mx-auto h-10 w-auto" src="https://flowbite.com/docs/images/logo.svg" alt="Your Company">
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">
@@ -7,10 +7,11 @@
                 account
             </h2>
         </div>
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm ">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()"
+                class="border px-8 rounded-lg border-dashed border-slate-300">
                 <div class="space-y-12">
-                    <div class="border-b border-gray-900/10 pb-12">
+                    <div class=" border-gray-900/10 pb-12">
                         <!-- <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can
                             receive mail.
                         </p> -->

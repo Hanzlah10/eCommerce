@@ -19,6 +19,7 @@ export class DarkmodeToggleComponent {
     } else {
       document.body.classList.remove('dark');
     }
+
   }
 
   toggleDarkMode(): void {
