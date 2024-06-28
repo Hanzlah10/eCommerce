@@ -9,7 +9,6 @@ const initialState: AuthStateInterface = {
     validationErrors: null
 }
 
-
 const authFeature = createFeature({
     name: 'auth',
     reducer: createReducer(
@@ -42,6 +41,20 @@ const authFeature = createFeature({
             ...state,
             isSubmitting: false,
             validationErrors: action.errors
+        })),
+        on(authActions.getCurrentUser, (state) => ({
+            ...state,
+            isLoading: true,
+        })),
+        on(authActions.getCurrentUserSuccess, (state, action) => ({
+            ...state,
+            isLoading: false,
+            currentUser: action,
+        })),
+        on(authActions.getCurrentUserFailure, (state) => ({
+            ...state,
+            isLoading: false,
+            currentUser: null,
         })),
     )
 

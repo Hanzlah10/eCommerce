@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import { PersistenceService } from "../../Shared/services/persistence.service";
 import { AuthResponseInterface } from "../types/authResponse.interface";
 import { MessageService } from "primeng/api";
+import { CurrentUserInterface } from "../../Shared/types/currentUser.interface";
 
 export const registerEffects = createEffect(
     (
@@ -46,9 +47,6 @@ export const loginEffect = createEffect(
             switchMap(({ request }) => {
                 return authService.loginUser(request).pipe(
                     map((authResponse: AuthResponseInterface) => {
-                        // console.log(authResponse);
-
-                        // console.log(authResponse.refreshToken + " refresh token");
                         persistenceService.set('accessToken', authResponse.accessToken);
                         persistenceService.set('refreshToken', authResponse.refreshToken);
                         return authActions.loginSuccess({ currentUser: authResponse.user })
@@ -94,6 +92,35 @@ export const redirectAfterRegisterEffect = createEffect(
         );
     },
     { functional: true, dispatch: false }
+);
+
+export const getCurrentUserEffect = createEffect(
+    (
+        actions$ = inject(Actions),
+        authService = inject(AuthService),
+        persistanceService = inject(PersistenceService)
+    ) => {
+        return actions$.pipe(
+            ofType(authActions.getCurrentUser),
+            switchMap(() => {
+                const token = persistanceService.get('accessToken')
+                if (!token) {
+                    return of(authActions.getCurrentUserFailure())
+                }
+                return authService.getCurrentUser().pipe(
+                    map((currentUser: CurrentUserInterface) => {
+                        return authActions.getCurrentUserSuccess(currentUser);
+                    }),
+                    catchError(() => {
+                        return of(
+                            authActions.getCurrentUserFailure()
+                        );
+                    })
+                );
+            })
+        );
+    },
+    { functional: true }
 );
 
 

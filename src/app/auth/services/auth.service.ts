@@ -28,4 +28,13 @@ export class AuthService {
     let url = environment.apiUrl + '/users/login';
     return this.http.post<ResponseAPI>(url, data).pipe(map(res => res.data))
   }
+  getCurrentUser(): Observable<CurrentUserInterface> {
+    const url = `${environment.apiUrl}/users/current-user`
+    console.log(url);
+    return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser))
+  }
+
 }
+
+
+// http://localhost:8080/api/v1/users/current-user
