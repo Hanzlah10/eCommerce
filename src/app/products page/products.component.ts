@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.catergoryId = this.route.snapshot.paramMap.get('categoryId') ?? '';
-    console.log(this.catergoryId);
+    // console.log(this.catergoryId);
     this.store.dispatch(ProductsByCategoryAction.getProducts({ categoryId: this.catergoryId }))
   }
 

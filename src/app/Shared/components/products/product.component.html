@@ -1,6 +1,6 @@
 <div
     class="w-full mx-auto max-w-sm bg-white border border-gray-300 rounded-lg shadow-lg hover:shadow-slate-700 hover:shadow-2xl transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-200">
-    <div routerLink="/product/{{product._id}}">
+    <div routerLink="/product/{{categoryName}}/{{product._id}}">
         <img class="rounded-t-lg" [src]="product.mainImage.url" alt="product image" />
     </div>
     <div class="p-5 pb-5">

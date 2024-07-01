@@ -17,7 +17,7 @@ export class productComponent {
 
     constructor(private store: Store) { }
     @Input() product!: ProductInterface
-
+    @Input() categoryName !: string
     addtoCart(product: ProductInterface) {
         this.store.dispatch(cartActions.addtoCart({ product }))
         // console.log(product);

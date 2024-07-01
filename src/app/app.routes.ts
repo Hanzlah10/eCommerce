@@ -18,7 +18,7 @@ export const routes: Routes = [
         loadChildren: () => import('./products page/products.routes').then(m => m.ProductsRoutes)
     },
     {
-        path: 'product/:productId',
+        path: 'product/:categoryName/:productId',
         loadChildren: () => import('./single-product/single-prod.routes').then(m => m.SingleProdRoute)
     }
 

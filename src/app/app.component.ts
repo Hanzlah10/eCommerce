@@ -17,5 +17,7 @@ export class AppComponent {
   constructor(public router: Router) {
 
   }
+  //oninit action dispatch get user
+
 
 }

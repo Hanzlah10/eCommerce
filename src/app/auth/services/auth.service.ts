@@ -40,14 +40,26 @@ export class AuthService {
     const options = { headers };
     return this.http.post<ResponseAPI>(url, data, options).pipe(map(res => res.data))
   }
+
+
   getCurrentUser(): Observable<CurrentUserInterface> {
     const url = `${environment.apiUrl}/users/current-user`
     console.log(url);
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-    const options = { headers };
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    //   'Authorization': `Bearer ${token}`
+    // });
     return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser))
   }
+
+  // getCurrentUser(token: string): Observable<CurrentUserInterface> {
+  //   const url = `${environment.apiUrl}/users/current-user`
+  //   console.log(url);
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${token}`
+  //   });
+  //   return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser))
+  // }
 
 }

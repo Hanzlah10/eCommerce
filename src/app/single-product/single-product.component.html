@@ -20,7 +20,20 @@
                     <span class="mx-2 text-gray-500">&gt;</span>
                 </li>
 
-                <li class="text-gray-500 capitalize dark:text-white">{{product.name}}</li>
+
+
+                <li class="text-gray-500 capitalize dark:text-white">{{categoryName}}
+                </li>
+                <li>
+                    <span class="mx-2 text-gray-500">&gt;</span>
+                </li>
+
+
+
+                <li class="text-gray-500 capitalize dark:text-white">{{product.name}}
+                </li>
+
+
             </ul>
         </nav>
         <!-- /breadcrumbs  -->
@@ -106,7 +119,7 @@
                         class="font-normal dark:text-white">{{product.updatedAt}}</span>
                 </p>
                 <p class="font-bold dark:text-white">
-                    Category: <span class="font-normal dark:text-white">Sofa</span>
+                    Category: <span class="font-normal dark:text-white">{{categoryName}}</span>
                 </p>
                 <p class="font-bold dark:text-white">
                     Created At: <span class="font-normal dark:text-white">{{product.createdAt}}</span>

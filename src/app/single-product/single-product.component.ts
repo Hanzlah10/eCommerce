@@ -16,20 +16,24 @@ import { singleProductService } from './services/singleProduct.service';
 export class SingleProductComponent implements OnInit {
 
 
+  categoryName: string | undefined
+  product$ = this.store.select(selectProduct)
+  categoryID: string | undefined
+  category: string | undefined
+  count = 1
+
+
   constructor(private store: Store, private route: ActivatedRoute) {
 
   }
   ngOnInit(): void {
     let route = this.route.snapshot.paramMap.get('productId') ?? ''
+    this.categoryName = this.route.snapshot.paramMap.get('categoryName') ?? ''
     this.store.dispatch(singleProductActions.getProduct({ productId: route }))
-
   }
 
 
-  product$ = this.store.select(selectProduct)
-  categoryID: string | undefined
-  category: string | undefined
-  count = 1
+
 
   increment() {
     if (this.count < 10) {
