@@ -1,6 +1,7 @@
 import { createFeature, createReducer, on } from "@ngrx/store";
 import { AuthStateInterface } from "../types/authState.interface";
 import { authActions } from "./actions";
+import { Action } from "rxjs/internal/scheduler/Action";
 
 const initialState: AuthStateInterface = {
     isSubmitting: false,
@@ -46,11 +47,15 @@ const authFeature = createFeature({
             ...state,
             isLoading: true,
         })),
-        on(authActions.getCurrentUserSuccess, (state, action) => ({
-            ...state,
-            isLoading: false,
-            currentUser: action,
-        })),
+        on(authActions.getCurrentUserSuccess, (state, action) => {
+            // console.log(action);
+
+            return {
+                ...state,
+                isLoading: false,
+                currentUser: action
+            }
+        }),
         on(authActions.getCurrentUserFailure, (state) => ({
             ...state,
             isLoading: false,

@@ -6,7 +6,7 @@ import { CurrentUserInterface } from '../../Shared/types/currentUser.interface';
 import { RegisterRequestInterface } from '../types/registerRequest.interface';
 import { Observable, map } from 'rxjs';
 import { LoginRequestInterface } from '../types/loginRequest.interface';
-import { ResponseAPI } from '../../Shared/types/respose.interface';
+import { ResponseAPI, ResponseUserAPI } from '../../Shared/types/respose.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -45,14 +45,10 @@ export class AuthService {
   // getCurrentUser(): Observable<CurrentUserInterface> {
   //   const url = `${environment.apiUrl}/users/current-user`
   //   console.log(url);
-  //   // const headers = new HttpHeaders({
-  //   //   'Content-Type': 'application/json',
-  //   //   'Authorization': `Bearer ${token}`
-  //   // });
   //   return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser))
   // }
 
-  getCurrentUser(token: unknown): Observable<CurrentUserInterface> {
+  getCurrentUser(token: string): Observable<CurrentUserInterface> {
     const url = `${environment.apiUrl}/users/current-user`
     console.log(url);
     const headers = new HttpHeaders({
@@ -61,7 +57,21 @@ export class AuthService {
     });
     const options = { headers };
 
-    return this.http.get<AuthResponseInterface>(url, options).pipe(map(this.getUser))
+    return this.http.get<ResponseUserAPI>(url, options).pipe(map(res => res.data))
   }
+
+
+
+  // logOutUser(token: string) {
+
+  //   const url = `${environment.apiUrl}/users/logout`
+  //   console.log(url);
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${token}`
+  //   });
+  //   const options = { headers };
+  //   return this.http.post
+  // }
 
 }

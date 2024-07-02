@@ -31,4 +31,9 @@ export class NavbarComponent {
   onCartToggle(isVisible: boolean) {
     this.isCartVisible = isVisible;
   }
+
+  signOut() {
+
+  }
+
 }

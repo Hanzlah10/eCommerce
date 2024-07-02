@@ -13,8 +13,8 @@ import { productFeatureKey, productReducer } from './products page/store/reducer
 import * as ProductsEffect from './products page/store/effects';
 import * as SingleProductsEffect from './single-product/store/effects';
 import { singleProdFeatureKey, singleProdReducer } from './single-product/store/reducers';
-import { authInterceptor } from './Shared/services/authInterceptor';
 import { cartFeatureKey, cartReducer } from './Shared/components/cart/store/reducers';
+import { authInterceptor } from './Shared/services/authInterceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

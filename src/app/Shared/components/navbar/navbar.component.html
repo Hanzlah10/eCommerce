@@ -7,6 +7,27 @@
             </a>
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
+
+
+                <div class="mx-5 flex items-center hover:bg-blue-50 dark:hover:bg-blue-600 rounded-lg p-2"
+                    (click)="toggleCart()">
+                    <i class="pi pi-shopping-cart dark:text-white" style="font-size: 1.5rem"></i>
+                </div>
+
+
+
+                <!-- Cart component -->
+                <app-cart [IsCartVisible]="isCartVisible" (isCartVisibleToggle)="onCartToggle($event)"></app-cart>
+
+                <ng-container *ngIf="data.currentUser == null">
+
+                    <button type="button" routerLink="/login"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login
+                        -></button>
+
+                </ng-container>
+
+
                 <ng-container *ngIf="data?.currentUser != null">
                     <div
                         class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -36,53 +57,34 @@
                             </div>
                         </div>
                     </div>
-                </ng-container>
 
-
-                <div class="mx-5 flex items-center hover:bg-blue-50 dark:hover:bg-blue-600 rounded-lg p-2"
-                    (click)="toggleCart()">
-                    <i class="pi pi-shopping-cart dark:text-white" style="font-size: 1.5rem"></i>
-                </div>
-
-
-
-                <!-- Cart component -->
-                <app-cart [IsCartVisible]="isCartVisible" (isCartVisibleToggle)="onCartToggle($event)"></app-cart>
-
-                <ng-container *ngIf="data.currentUser == null">
-
-                    <button type="button" routerLink="/login"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login
-                        -></button>
-
-                </ng-container>
-                <!-- Dropdown menu -->
-                <!-- <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-                    id="user-dropdown">
-                    <div class="px-4 py-3">
-                        <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                        <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">haznaa</span>
-                    </div>
-                    <ul class="py-2" aria-labelledby="user-menu-button">
-                        <li>
+                    <!-- Dropdown menu -->
+                    <div class="z-50 mx-7 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                        id="user-dropdown">
+                        <div class="px-5 py-3">
+                            <span
+                                class="block text-sm text-gray-900 dark:text-white capitalize">{{data.currentUser?.username}}</span>
+                            <span
+                                class="block text-sm  text-gray-500 truncate dark:text-gray-400 capitalize">{{data.currentUser?.role}}</span>
+                        </div>
+                        <ul class="" aria-labelledby="user-menu-button">
+                            <!-- <li>
                             <a href="#"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                out</a>
-                        </li>
-                    </ul>
-                </div> -->
+                        </li> -->
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                            </li>
+                            <li>
+                                <a (click)="signOut()"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                    out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+
                 <app-darkmode-toggle></app-darkmode-toggle>
                 <button data-collapse-toggle="navbar-user" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
