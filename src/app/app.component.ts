@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet } from '@angular/router';
 import { PrimengModule } from './Modules/primeng.module';
 import { NavbarComponent } from './Shared/components/navbar/navbar.component';
 import { FooterComponent } from './Shared/components/footer/footer.component';
+import { authActions } from './auth/store/actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +14,14 @@ import { FooterComponent } from './Shared/components/footer/footer.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'eCommerce';
-  constructor(public router: Router) {
+  constructor(public router: Router, private store: Store) {
 
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(authActions.getCurrentUser())
   }
   //oninit action dispatch get user
 

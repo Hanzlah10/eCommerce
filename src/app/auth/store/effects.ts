@@ -109,7 +109,8 @@ export const getCurrentUserEffect = createEffect(
                 if (!token) {
                     return of(authActions.getCurrentUserFailure())
                 }
-                return authService.getCurrentUser().pipe(
+
+                return authService.getCurrentUser(token).pipe(
                     map((currentUser: CurrentUserInterface) => {
                         return authActions.getCurrentUserSuccess(currentUser);
                     }),

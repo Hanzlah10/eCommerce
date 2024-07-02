@@ -42,24 +42,26 @@ export class AuthService {
   }
 
 
-  getCurrentUser(): Observable<CurrentUserInterface> {
-    const url = `${environment.apiUrl}/users/current-user`
-    console.log(url);
-    // const headers = new HttpHeaders({
-    //   'Content-Type': 'application/json',
-    //   'Authorization': `Bearer ${token}`
-    // });
-    return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser))
-  }
-
-  // getCurrentUser(token: string): Observable<CurrentUserInterface> {
+  // getCurrentUser(): Observable<CurrentUserInterface> {
   //   const url = `${environment.apiUrl}/users/current-user`
   //   console.log(url);
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${token}`
-  //   });
+  //   // const headers = new HttpHeaders({
+  //   //   'Content-Type': 'application/json',
+  //   //   'Authorization': `Bearer ${token}`
+  //   // });
   //   return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser))
   // }
+
+  getCurrentUser(token: unknown): Observable<CurrentUserInterface> {
+    const url = `${environment.apiUrl}/users/current-user`
+    console.log(url);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    const options = { headers };
+
+    return this.http.get<AuthResponseInterface>(url, options).pipe(map(this.getUser))
+  }
 
 }
