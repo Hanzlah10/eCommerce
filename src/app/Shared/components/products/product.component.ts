@@ -3,7 +3,7 @@ import { PrimengModule } from "../../../Modules/primeng.module";
 import { ProductInterface } from "../../../products page/types/products.interface";
 import { RouterLink } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { cartActions } from "../cart/store/actions";
+import { cartActions } from "../../../cart/store/actions";
 
 @Component({
     selector: 'app-product',

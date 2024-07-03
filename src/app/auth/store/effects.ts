@@ -2,7 +2,7 @@ import { inject } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "../services/auth.service";
 import { authActions } from "./actions";
-import { catchError, map, of, switchMap, tap } from "rxjs";
+import { catchError, map, of, switchMap, take, tap } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { PersistenceService } from "../../Shared/services/persistence.service";
@@ -69,10 +69,14 @@ export const loginEffect = createEffect(
 )
 
 export const redirectAfterLoginEffect = createEffect(
-    (actions$ = inject(Actions), router = inject(Router)) => {
+    (actions$ = inject(Actions),
+        router = inject(Router),
+        messageService = inject(MessageService)
+    ) => {
         return actions$.pipe(
             ofType(authActions.loginSuccess),
             tap(() => {
+                messageService.add({ severity: 'success', summary: 'Logged In', detail: 'logged in successfully' });
                 router.navigateByUrl('/');
             })
         );
@@ -86,7 +90,7 @@ export const redirectAfterRegisterEffect = createEffect(
         return actions$.pipe(
             ofType(authActions.registerSuccess),
             tap(() => {
-                messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content', life: 10000 });
+                messageService.add({ severity: 'success', summary: 'Success', detail: 'Registration Successfull', life: 10000 });
                 router.navigateByUrl('/login');
             })
         );
@@ -98,7 +102,7 @@ export const getCurrentUserEffect = createEffect(
     (
         actions$ = inject(Actions),
         authService = inject(AuthService),
-        persistenceService = inject(PersistenceService)
+        persistenceService = inject(PersistenceService),
     ) => {
         return actions$.pipe(
             ofType(authActions.getCurrentUser),
@@ -125,34 +129,25 @@ export const getCurrentUserEffect = createEffect(
 );
 
 
+export const logoutEffect = createEffect(
+    (
+        persistenceService = inject(PersistenceService),
+        actions$ = inject(Actions),
+        messageService = inject(MessageService)
+    ) => {
 
-// export const loginEffects1 = createEffect(
-//     (
-//         actions$ = inject(Actions),
-//         authService = inject(AuthService),
-//         persistenceService = inject(PersistenceService),
-//         router = inject(Router)
-//     ) => {
-//         return actions$.pipe(
-//             ofType(authActions.login),
-//             switchMap(({ request }) => {
-//                 return authService.loginUser(request).pipe(
-//                     map((authResponse: AuthResponseInterface) => {
-//                         persistenceService.set('refreshToken', authResponse.refreshToken);
-//                         persistenceService.set('accessToken', authResponse.accessToken);
-//                         // router.navigate(['/register'])
-//                         return authActions.loginSuccess({ currentUser: authResponse.user });
-//                     }),
-//                     catchError((errorResponse: HttpErrorResponse) => {
-//                         return of(
-//                             authActions.loginFailure({
-//                                 errors: errorResponse.error,
-//                             })
-//                         );
-//                     })
-//                 );
-//             })
-//         );
-//     },
-//     { functional: true }
-// )
+        return actions$.pipe(
+            ofType(authActions.logout),
+            take(1),
+            tap(() => {
+                persistenceService.set('accessToken', " ")
+                persistenceService.set('refreshToken', " ")
+                // primeng toast
+                messageService.add({ severity: 'warn', summary: 'Logged out', detail: 'logged out successfully' });
+            })
+        )
+    }, {
+    functional: true
+}
+)
+

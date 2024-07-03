@@ -61,6 +61,10 @@ const authFeature = createFeature({
             isLoading: false,
             currentUser: null,
         })),
+        on(authActions.logout, (state) => ({
+            ...state,
+            currentUser: null
+        }))
     )
 
 })

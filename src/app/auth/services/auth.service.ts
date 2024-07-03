@@ -7,13 +7,15 @@ import { RegisterRequestInterface } from '../types/registerRequest.interface';
 import { Observable, map } from 'rxjs';
 import { LoginRequestInterface } from '../types/loginRequest.interface';
 import { ResponseAPI, ResponseUserAPI } from '../../Shared/types/respose.interface';
+import { PersistenceService } from '../../Shared/services/persistence.service';
+import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private persistenceService: PersistenceService) { }
 
   getUser(response: AuthResponseInterface): CurrentUserInterface {
     return response.user
@@ -41,16 +43,8 @@ export class AuthService {
     return this.http.post<ResponseAPI>(url, data, options).pipe(map(res => res.data))
   }
 
-
-  // getCurrentUser(): Observable<CurrentUserInterface> {
-  //   const url = `${environment.apiUrl}/users/current-user`
-  //   console.log(url);
-  //   return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser))
-  // }
-
   getCurrentUser(token: string): Observable<CurrentUserInterface> {
     const url = `${environment.apiUrl}/users/current-user`
-    console.log(url);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
@@ -62,16 +56,20 @@ export class AuthService {
 
 
 
-  // logOutUser(token: string) {
+  logOutUser() {
 
-  //   const url = `${environment.apiUrl}/users/logout`
-  //   console.log(url);
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${token}`
-  //   });
-  //   const options = { headers };
-  //   return this.http.post
-  // }
+    const url = `${environment.apiUrl}/users/logout`
+    const token = this.persistenceService.get('accessToken')
+    this.persistenceService.set('accessToken', '')
+    this.persistenceService.set('refreshToken', '')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const options = { headers };
+
+    return this.http.post(url, options)
+  }
 
 }

@@ -47,7 +47,7 @@
                         </div>
                         <div class="relative ml-3">
                             <div>
-                                <button type="button"
+                                <button type="button" (click)="toggleDropDown()"
                                     class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                     id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="absolute -inset-1.5"></span>
@@ -59,30 +59,32 @@
                     </div>
 
                     <!-- Dropdown menu -->
-                    <div class="z-50 mx-7 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-                        id="user-dropdown">
-                        <div class="px-5 py-3">
-                            <span
-                                class="block text-sm text-gray-900 dark:text-white capitalize">{{data.currentUser?.username}}</span>
-                            <span
-                                class="block text-sm  text-gray-500 truncate dark:text-gray-400 capitalize">{{data.currentUser?.role}}</span>
+                    <ng-container *ngIf="showDropDown">
+                        <div class="absolute top-16 right-52 z-50 mx-7 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 sm:right-10 md:right-20 lg:right-52"
+                            id="user-dropdown">
+                            <div class="px-5 py-3">
+                                <span
+                                    class="block text-sm text-gray-900 dark:text-white capitalize">{{data.currentUser?.username}}</span>
+                                <span
+                                    class="block text-sm text-gray-500 truncate dark:text-gray-400 capitalize">{{data.currentUser?.role}}</span>
+                            </div>
+                            <ul aria-labelledby="user-menu-button">
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                        Settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="signOut()"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                        Sign out
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="" aria-labelledby="user-menu-button">
-                            <!-- <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                        </li> -->
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                            </li>
-                            <li>
-                                <a (click)="signOut()"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                    out</a>
-                            </li>
-                        </ul>
-                    </div>
+                    </ng-container>
+
                 </ng-container>
 
                 <app-darkmode-toggle></app-darkmode-toggle>
@@ -125,6 +127,8 @@
                 </ul>
             </div>
         </div>
+        <p-toast></p-toast>
+
     </nav>
 
 </ng-container>
