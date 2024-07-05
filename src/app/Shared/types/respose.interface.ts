@@ -1,5 +1,5 @@
 import { AuthResponseInterface } from "../../auth/types/authResponse.interface";
-import { CartItem } from "../../cart/types/cartItem.interface";
+import { CartInterface } from "../../cart/types/cart.interface";
 import { ProductInterface, ProductsByCategoryWithPagination } from "../../products page/types/products.interface";
 import { CategoryInterface, PaginationInterface } from "./category.interface";
 import { CurrentUserInterface } from "./currentUser.interface";
@@ -41,14 +41,8 @@ export interface ResponseSingleCategoryAPI {
     message: string,
     success: boolean
 }
-
 export interface CartResponse {
-    data: {
-        _id: string;
-        cartTotal: number;
-        discountedTotal: number;
-        items: CartItem[];
-    };
+    data: CartInterface;
     message: string;
     statusCode: number;
     success: boolean;

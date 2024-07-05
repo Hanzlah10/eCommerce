@@ -10,7 +10,7 @@ export const addtoCartEffect = createEffect(
         messageService = inject(MessageService)
     ) => {
         return action$.pipe(
-            ofType(cartActions.addtoCart),
+            // ofType(cartActions.getCarItem),
             take(1),
             tap(() => {
                 messageService.add({ severity: 'secondary', summary: 'Item Added !' })

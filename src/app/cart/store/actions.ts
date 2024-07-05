@@ -1,11 +1,14 @@
-import { createActionGroup, props } from "@ngrx/store";
-import { ProductInterface } from "../../products page/types/products.interface";
+import { createActionGroup, emptyProps, props } from "@ngrx/store";
+import { CartItemInterface } from "../types/cartItem.interface";
+import { ValidationErrors } from "@angular/forms";
 
 export const cartActions = createActionGroup({
 
     source: 'cartActions',
     events: {
-        'AddtoCart': props<{ items: ProductInterface }>()
+        'getCarItem': emptyProps(),
+        'getCartItem Success': props<CartItemInterface>(),
+        'getCartItem Failure': props<ValidationErrors>(),
     }
 })
 
