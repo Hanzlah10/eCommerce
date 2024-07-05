@@ -4,7 +4,6 @@ import { ProductInterface } from "../../../products page/types/products.interfac
 import { RouterLink } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { cartActions } from "../../../cart/store/actions";
-import { cartService } from "../../../cart/services/cart.service";
 
 @Component({
     selector: 'app-product',

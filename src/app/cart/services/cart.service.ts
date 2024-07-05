@@ -41,30 +41,19 @@ export class cartService {
         return this.http.get<CartResponseAPI>(url, options).pipe(map(res => res.data))
     }
 
-    updateUserCart(productId: string, quantity: number = 1): Observable<CartInterface> {
+    updateUserCart(productId: string, quantity: number): Observable<CartInterface> {
 
         const token = this.persistenceService.get('accessToken')
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         });
+        const data = { quantity: quantity }
         const options = { headers }
         const url = environment.apiUrl + `/ecommerce/cart/item/${productId}`
-        return this.http.post<CartResponseAPI>(url, { quantity: quantity }, options).pipe(map(res => res.data))
+        return this.http.post<CartResponseAPI>(url, data, options).pipe(map(res => res.data))
     }
 
-
-    // removeCartItem(productId: string): Observable<CartInterface> {
-    //     const token = this.persistenceService.get('accessToken')
-    //     const headers = new HttpHeaders({
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer ${token}`
-    //     });
-    //     const options = { headers }
-
-    //     const url = environment.apiUrl + `/ecommerce/cart/item/${productId}`
-    //     return this.http.delete<CartResponseAPI>(url, options).pipe(map(res => res.data))
-    // }
 
     removeCartItem(productId: string): Observable<CartInterface> {
 

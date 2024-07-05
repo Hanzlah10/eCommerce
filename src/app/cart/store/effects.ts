@@ -43,7 +43,9 @@ export const addtoCartEffect = createEffect(
             switchMap(({ productId, quantity }) => {
                 return CartService.updateUserCart(productId, quantity).pipe(map(
                     (cartItem: CartInterface) => {
-                        messageService.add({ severity: 'success', summary: 'Updated Cart', detail: 'Updated Cart successfully' });
+                        console.log(quantity + " from egge");
+
+                        messageService.add({ severity: 'success', summary: 'Updated Cart', detail: 'Updated Cart successfully', life: 800 });
                         return cartActions.addToCartSuccess(cartItem)
                     }
                 ),
@@ -68,7 +70,7 @@ export const removeCartItemEffects = createEffect(
             switchMap(({ productId }) => {
                 return CartService.removeCartItem(productId).pipe(map(
                     (cartItem: CartInterface) => {
-                        messageService.add({ severity: 'error', summary: 'Removed Item', detail: 'removed Item successfully' });
+                        messageService.add({ severity: 'error', summary: 'Removed Item', detail: 'removed Item successfully', life: 800 });
                         return cartActions.removeCartItemSuccess(cartItem)
                     }
                 ),
