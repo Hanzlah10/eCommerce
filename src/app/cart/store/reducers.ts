@@ -3,7 +3,9 @@ import { cartActions } from "./actions"
 import { cartStateInterface } from "../types/cartState.interface"
 
 const initialState: cartStateInterface = {
-    cartItems: []
+    cartItems: {},
+    totalPrice: 0,
+    totalQuantity: 0
 }
 
 const cartFeature = createFeature({
@@ -11,14 +13,15 @@ const cartFeature = createFeature({
 
     reducer: createReducer(
         initialState,
-        on(cartActions.addtoCart, (state, action) => {
-            let newProduct = action.product
-            return {
-                ...state,
-                cartItems: [...state.cartItems, newProduct]
-            }
-        })
+        // on(cartActions.addtoCart, (state, action) => {
+        //     let newProduct = action.product
+        //     return {
+        //         ...state,
+        //         cartItems: [...state.cartItems, newProduct]
+        //     }
+        // })
     )
 })
 
 export const { name: cartFeatureKey, reducer: cartReducer, selectCartItems } = cartFeature
+

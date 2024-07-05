@@ -5,7 +5,7 @@ export const cartActions = createActionGroup({
 
     source: 'cartActions',
     events: {
-        'AddtoCart': props<{ product: ProductInterface }>()
+        'AddtoCart': props<{ items: ProductInterface }>()
     }
-
 })
+

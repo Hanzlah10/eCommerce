@@ -1,5 +1,7 @@
 import { ProductInterface } from "../../products page/types/products.interface";
 
 export interface cartStateInterface {
-    cartItems: ProductInterface[] | []
+    cartItems: { [id: string]: ProductInterface }
+    totalQuantity: number,
+    totalPrice: number
 }

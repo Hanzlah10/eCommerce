@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { ToastModule } from 'primeng/toast';
 import { CardModule } from 'primeng/card';
+import { RippleModule } from 'primeng/ripple';
 @NgModule({
   declarations: [],
   imports: [],
@@ -12,7 +13,8 @@ import { CardModule } from 'primeng/card';
     ButtonModule,
     FloatLabelModule,
     ToastModule,
-    CardModule
+    CardModule,
+    RippleModule
   ]
 })
 

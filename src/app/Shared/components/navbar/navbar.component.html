@@ -6,16 +6,10 @@
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">eCommerce</span>
             </a>
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-
-
-
                 <div class="mx-5 flex items-center hover:bg-blue-50 dark:hover:bg-blue-600 rounded-lg p-2"
                     (click)="toggleCart()">
                     <i class="pi pi-shopping-cart dark:text-white" style="font-size: 1.5rem"></i>
                 </div>
-
-
-
                 <!-- Cart component -->
                 <app-cart [IsCartVisible]="isCartVisible" (isCartVisibleToggle)="onCartToggle($event)"></app-cart>
 
@@ -130,5 +124,4 @@
         <p-toast></p-toast>
 
     </nav>
-
 </ng-container>

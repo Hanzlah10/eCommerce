@@ -12,9 +12,9 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { productFeatureKey, productReducer } from './products page/store/reducers';
 import * as ProductsEffect from './products page/store/effects';
 import * as SingleProductsEffect from './single-product/store/effects';
+import * as CartEffects from './cart/store/effects';
 import { singleProdFeatureKey, singleProdReducer } from './single-product/store/reducers';
 import { cartFeatureKey, cartReducer } from './cart/store/reducers';
-import { authInterceptor } from './Shared/services/authInterceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     // provideHttpClient(withInterceptors([authInterceptor])),
     provideHttpClient(),
     provideStore(),
-    provideEffects(authEffects, ProductsEffect, SingleProductsEffect),
+    provideEffects(authEffects, ProductsEffect, SingleProductsEffect, CartEffects),
     provideState(authFeatureKey, authReducer),
     provideState(productFeatureKey, productReducer),
     provideState(singleProdFeatureKey, singleProdReducer),
