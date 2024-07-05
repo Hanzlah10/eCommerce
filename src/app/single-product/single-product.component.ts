@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { selectProduct } from './store/reducers';
 import { singleProductService } from './services/singleProduct.service';
+import { cartActions } from '../cart/store/actions';
 
 @Component({
   selector: 'app-single-product',
@@ -33,7 +34,10 @@ export class SingleProductComponent implements OnInit {
   }
 
 
+  addtoCart(productId: string) {
+    this.store.dispatch(cartActions.addToCart({ productId: productId, quantity: this.count }))
 
+  }
 
   increment() {
     if (this.count < 10) {

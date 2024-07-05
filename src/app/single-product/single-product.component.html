@@ -109,13 +109,13 @@
                     <span class="text-red-600" *ngIf="product.stock<0">(Out of Stock)</span>
                 </p>
                 <p class="font-bold dark:text-white">Updated At: <span
-                        class="font-normal dark:text-white">{{product.updatedAt}}</span>
+                        class="font-normal dark:text-white">{{product.updatedAt | date}}</span>
                 </p>
                 <p class="font-bold dark:text-white">
-                    Category: <span class="font-normal dark:text-white">{{categoryName}}</span>
+                    Category: <span class="font-normal dark:text-white capitalize">{{ categoryName}}</span>
                 </p>
                 <p class="font-bold dark:text-white">
-                    Created At: <span class="font-normal dark:text-white">{{product.createdAt}}</span>
+                    Created At: <span class="font-normal dark:text-white">{{ product.createdAt | date}}</span>
                 </p>
 
                 <p class="mt-4 text-4xl font-bold text-blue-700 dark:text-white">
@@ -149,7 +149,7 @@
                 </div>
 
                 <div class="mt-7 flex flex-col items-left gap-6 ">
-                    <button
+                    <button (click)="addtoCart(product._id)"
                         class="flex h-12 w-1/3 items-center justify-center bg-blue-700 text-white duration-100 hover:bg-blue-800">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="mr-3 h-4 w-4">
