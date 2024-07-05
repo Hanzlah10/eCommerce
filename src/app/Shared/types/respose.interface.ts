@@ -41,12 +41,14 @@ export interface ResponseSingleCategoryAPI {
     message: string,
     success: boolean
 }
-export interface CartResponse {
+export interface CartResponseAPI {
     data: CartInterface;
     message: string;
     statusCode: number;
     success: boolean;
 }
+
+
 
 
 

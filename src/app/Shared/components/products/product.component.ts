@@ -20,6 +20,6 @@ export class productComponent {
     @Input() categoryName !: string
 
     addtoCart(product: ProductInterface) {
-        this.store.dispatch(cartActions.addtoCart({ product }))
+        // this.store.dispatch(cartActions.addtoCart({ product }))
     }
 }   

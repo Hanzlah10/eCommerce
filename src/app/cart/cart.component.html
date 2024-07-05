@@ -27,13 +27,13 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-8" *ngFor="let product of cartItems">
+                                <div class="mt-8" *ngFor="let item of cartItems">
                                     <div class="flow-root">
                                         <ul role="list" class="-my-6 divide-y divide-gray-200">
                                             <li class="flex py-6">
                                                 <div
                                                     class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                    <img [src]="product.mainImage.url"
+                                                    <img [src]="item.product.mainImage.url"
                                                         alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                                         class="h-full w-full object-cover object-center">
                                                 </div>
@@ -41,8 +41,9 @@
                                                     <div>
                                                         <div
                                                             class="flex justify-between text-base font-medium text-gray-900">
-                                                            <h3 class="dark:text-white capitalize">{{product.name}}</h3>
-                                                            <p class="ml-4 dark:text-white">₹{{product.price}}</p>
+                                                            <h3 class="dark:text-white capitalize">{{item.product.name}}
+                                                            </h3>
+                                                            <p class="ml-4 dark:text-white">₹{{item.product.price}}</p>
                                                         </div>
                                                         <p class="mt-1 text-sm text-gray-500 dark:text-gray-200">Salmon
                                                         </p>

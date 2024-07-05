@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCartItems } from './store/reducers';
+import { selectItems } from './store/reducers';
+import { cartActions } from './store/actions';
 
 @Component({
   selector: 'app-cart',
@@ -20,8 +21,10 @@ export class CartComponent {
   }
 
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+    this.store.dispatch(cartActions.getCarItems())
+  }
 
-  cartItems$ = this.store.select(selectCartItems)
+  cartItems$ = this.store.select(selectItems)
 }
 

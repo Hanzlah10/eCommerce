@@ -1,7 +1,9 @@
-import { ProductInterface } from "../../products page/types/products.interface";
+import { BackendErrorsInterface } from "../../Shared/types/backendErrors.interface";
+import { CartItemInterface } from "./cartItem.interface";
 
 export interface cartStateInterface {
-    cartItems: { [id: string]: ProductInterface }
-    totalQuantity: number,
-    totalPrice: number
+    cartTotal: number;
+    discountedTotal: number;
+    items: CartItemInterface[] | []
+    errors: BackendErrorsInterface | null
 }
