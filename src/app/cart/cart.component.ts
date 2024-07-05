@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectItems } from './store/reducers';
 import { cartActions } from './store/actions';
+import { cartService } from './services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,10 +22,18 @@ export class CartComponent {
   }
 
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private ser: cartService) {
     this.store.dispatch(cartActions.getCarItems())
   }
 
+
   cartItems$ = this.store.select(selectItems)
+
+  removeItem(productId: string) {
+    console.log(productId);
+    // this.ser.removeCartItem(productId)
+    this.store.dispatch(cartActions.removeCartItem({ productId }))
+  }
 }
+
 

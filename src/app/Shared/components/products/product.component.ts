@@ -4,6 +4,7 @@ import { ProductInterface } from "../../../products page/types/products.interfac
 import { RouterLink } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { cartActions } from "../../../cart/store/actions";
+import { cartService } from "../../../cart/services/cart.service";
 
 @Component({
     selector: 'app-product',
@@ -20,6 +21,6 @@ export class productComponent {
     @Input() categoryName !: string
 
     addtoCart(product: ProductInterface) {
-        // this.store.dispatch(cartActions.addtoCart({ product }))
+        this.store.dispatch(cartActions.addToCart({ productId: product._id, quantity: 1 }))
     }
 }   

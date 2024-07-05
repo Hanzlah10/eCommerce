@@ -10,9 +10,12 @@ export const cartActions = createActionGroup({
         'getCarItems': emptyProps(),
         'getCartItems Success': props<CartInterface>(),
         'getCartItems Failure': props<ValidationErrors>(),
-        'addToCart': props<CartItemInterface>(),
+        'addToCart': props<{ productId: string, quantity: number }>(),
         'addToCart Success': props<CartInterface>(),
         'addToCart Failure': props<ValidationErrors>(),
+        'removeCartItem': props<{ productId: string }>(),
+        'removeCartItem Success': props<CartInterface>(),
+        'removeCartItem Failure': props<ValidationErrors>(),
 
 
     }

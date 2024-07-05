@@ -6,6 +6,7 @@ import { catchError, map, of, switchMap, take, tap } from "rxjs";
 import { cartService } from "../services/cart.service";
 import { CartInterface } from "../types/cart.interface";
 import { HttpErrorResponse } from "@angular/common/http";
+import { CartItemInterface } from "../types/cartItem.interface";
 
 export const getItemEffect = createEffect(
     (
@@ -24,13 +25,63 @@ export const getItemEffect = createEffect(
                         cartActions.getCartItemsFailure(errorResponse.error)
                     )
                 }
-                ))
+                )
+                )
             })
         )
     }, { functional: true }
 )
 
-
+export const addtoCartEffect = createEffect(
+    (
+        actions$ = inject(Actions),
+        CartService = inject(cartService),
+        messageService = inject(MessageService)
+    ) => {
+        return actions$.pipe(
+            ofType(cartActions.addToCart),
+            switchMap(({ productId, quantity }) => {
+                return CartService.updateUserCart(productId, quantity).pipe(map(
+                    (cartItem: CartInterface) => {
+                        messageService.add({ severity: 'success', summary: 'Updated Cart', detail: 'Updated Cart successfully' });
+                        return cartActions.addToCartSuccess(cartItem)
+                    }
+                ),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        return of(
+                            cartActions.addToCartFailure(errorResponse.error)
+                        )
+                    })
+                )
+            })
+        )
+    }, { functional: true }
+)
+export const removeCartItemEffects = createEffect(
+    (
+        actions$ = inject(Actions),
+        CartService = inject(cartService),
+        messageService = inject(MessageService)
+    ) => {
+        return actions$.pipe(
+            ofType(cartActions.removeCartItem),
+            switchMap(({ productId }) => {
+                return CartService.removeCartItem(productId).pipe(map(
+                    (cartItem: CartInterface) => {
+                        messageService.add({ severity: 'error', summary: 'Removed Item', detail: 'removed Item successfully' });
+                        return cartActions.removeCartItemSuccess(cartItem)
+                    }
+                ),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        return of(
+                            cartActions.removeCartItemFailure(errorResponse.error)
+                        )
+                    })
+                )
+            })
+        )
+    }, { functional: true }
+)
 
 
 

@@ -41,7 +41,7 @@ export class cartService {
         return this.http.get<CartResponseAPI>(url, options).pipe(map(res => res.data))
     }
 
-    updateUserCart(cartItem: CartItemInterface): Observable<CartInterface> {
+    updateUserCart(productId: string, quantity: number = 1): Observable<CartInterface> {
 
         const token = this.persistenceService.get('accessToken')
         const headers = new HttpHeaders({
@@ -49,22 +49,33 @@ export class cartService {
             'Authorization': `Bearer ${token}`
         });
         const options = { headers }
-
-        const url = environment.apiUrl + `/ecommerce/cart/item/${cartItem.product._id}`
-        return this.http.post<CartResponseAPI>(url, cartItem, options).pipe(map(res => res.data))
+        const url = environment.apiUrl + `/ecommerce/cart/item/${productId}`
+        return this.http.post<CartResponseAPI>(url, { quantity: quantity }, options).pipe(map(res => res.data))
     }
 
 
-    removeCartItem(productId: string): Observable<CartResponseAPI> {
+    // removeCartItem(productId: string): Observable<CartInterface> {
+    //     const token = this.persistenceService.get('accessToken')
+    //     const headers = new HttpHeaders({
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `Bearer ${token}`
+    //     });
+    //     const options = { headers }
+
+    //     const url = environment.apiUrl + `/ecommerce/cart/item/${productId}`
+    //     return this.http.delete<CartResponseAPI>(url, options).pipe(map(res => res.data))
+    // }
+
+    removeCartItem(productId: string): Observable<CartInterface> {
+
         const token = this.persistenceService.get('accessToken')
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         });
         const options = { headers }
-
         const url = environment.apiUrl + `/ecommerce/cart/item/${productId}`
-        return this.http.delete<CartResponseAPI>(url, options)
+        return this.http.delete<CartResponseAPI>(url, options).pipe(map(res => res.data))
     }
 
     clearUserCart(): Observable<CartResponseAPI> {

@@ -11,7 +11,6 @@ const initialState: cartStateInterface = {
 
 const cartFeature = createFeature({
     name: 'cart',
-
     reducer: createReducer(
         initialState,
         on(cartActions.getCartItemsSuccess, (state, action) => ({
@@ -19,7 +18,21 @@ const cartFeature = createFeature({
             items: action.items,
             cartTotal: action.cartTotal,
             discountedTotal: action.discountedTotal
-        }))
+        })),
+
+        on(cartActions.addToCartSuccess, (state, action) => ({
+            ...state,
+            items: action.items,
+            cartTotal: action.cartTotal,
+            discountedTotal: action.discountedTotal
+        })),
+        on(cartActions.removeCartItemSuccess, (state, action) => ({
+            ...state,
+            items: action.items,
+            cartTotal: action.cartTotal,
+            discountedTotal: action.discountedTotal
+        })),
+
     )
 })
 
