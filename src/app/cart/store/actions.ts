@@ -1,7 +1,7 @@
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
-import { CartItemInterface } from "../types/cartItem.interface";
 import { ValidationErrors } from "@angular/forms";
 import { CartInterface } from "../types/cart.interface";
+import { CartResponseAPI } from "../../Shared/types/respose.interface";
 
 export const cartActions = createActionGroup({
 
@@ -16,8 +16,9 @@ export const cartActions = createActionGroup({
         'removeCartItem': props<{ productId: string }>(),
         'removeCartItem Success': props<CartInterface>(),
         'removeCartItem Failure': props<ValidationErrors>(),
-
-
+        'clearCartItem': emptyProps(),
+        'clearCartItem Success': props<CartInterface>(),
+        'clearCartItem Failure': props<ValidationErrors>(),
     }
 })
 

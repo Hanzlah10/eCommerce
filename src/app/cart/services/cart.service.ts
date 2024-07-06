@@ -67,7 +67,7 @@ export class cartService {
         return this.http.delete<CartResponseAPI>(url, options).pipe(map(res => res.data))
     }
 
-    clearUserCart(): Observable<CartResponseAPI> {
+    clearUserCart(): Observable<CartInterface> {
         const token = this.persistenceService.get('accessToken')
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -76,6 +76,6 @@ export class cartService {
         const options = { headers }
 
         const url = environment.apiUrl + `/ecommerce/cart/clear`
-        return this.http.delete<CartResponseAPI>(url, options)
+        return this.http.delete<CartResponseAPI>(url, options).pipe(map(res => res.data))
     }
 }

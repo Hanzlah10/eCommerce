@@ -59,6 +59,7 @@ export const addtoCartEffect = createEffect(
         )
     }, { functional: true }
 )
+
 export const removeCartItemEffects = createEffect(
     (
         actions$ = inject(Actions),
@@ -77,6 +78,33 @@ export const removeCartItemEffects = createEffect(
                     catchError((errorResponse: HttpErrorResponse) => {
                         return of(
                             cartActions.removeCartItemFailure(errorResponse.error)
+                        )
+                    })
+                )
+            })
+        )
+    }, { functional: true }
+)
+
+
+export const clearCartItemEffects = createEffect(
+    (
+        actions$ = inject(Actions),
+        CartService = inject(cartService),
+        messageService = inject(MessageService)
+    ) => {
+        return actions$.pipe(
+            ofType(cartActions.clearCartItem),
+            switchMap(() => {
+                return CartService.clearUserCart().pipe(map(
+                    (cartItem: CartInterface) => {
+                        messageService.add({ severity: 'error', summary: 'Cleared Cart', detail: 'removed Item successfully', life: 500 });
+                        return cartActions.clearCartItemSuccess(cartItem)
+                    }
+                ),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        return of(
+                            cartActions.clearCartItemFailure(errorResponse.error)
                         )
                     })
                 )

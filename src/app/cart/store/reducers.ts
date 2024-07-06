@@ -32,7 +32,12 @@ const cartFeature = createFeature({
             cartTotal: action.cartTotal,
             discountedTotal: action.discountedTotal
         })),
-
+        on(cartActions.clearCartItemSuccess, (state, action) => ({
+            ...state,
+            items: action.items,
+            cartTotal: action.cartTotal,
+            discountedTotal: action.discountedTotal
+        })),
     )
 })
 

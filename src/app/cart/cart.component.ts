@@ -5,13 +5,16 @@ import { selectCartTotal, selectDiscountedTotal, selectItems } from './store/red
 import { cartActions } from './store/actions';
 import { cartService } from './services/cart.service';
 import { combineLatest } from 'rxjs';
+import { PrimengModule } from '../Modules/primeng.module';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PrimengModule],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
+  providers: [ConfirmationService, MessageService]
 })
 export class CartComponent {
 
@@ -24,7 +27,9 @@ export class CartComponent {
   }
 
 
-  constructor(private store: Store, private ser: cartService) {
+
+  constructor(private store: Store, private confirmationService: ConfirmationService, private messageService: MessageService) {
+    // constructor(private store: Store) {
     this.store.dispatch(cartActions.getCarItems())
   }
 
@@ -52,6 +57,18 @@ export class CartComponent {
     if (count > 1) {
       this.store.dispatch(cartActions.addToCart({ productId: productId, quantity: --count }))
     }
+  }
+
+  clearCart(event: Event) {
+
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure you want to proceed?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.store.dispatch(cartActions.clearCartItem())
+      }
+    });
   }
 }
 

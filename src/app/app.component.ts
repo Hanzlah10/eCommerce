@@ -6,6 +6,7 @@ import { NavbarComponent } from './Shared/components/navbar/navbar.component';
 import { FooterComponent } from './Shared/components/footer/footer.component';
 import { authActions } from './auth/store/actions';
 import { Store } from '@ngrx/store';
+import { cartActions } from './cart/store/actions';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(authActions.getCurrentUser())
+    this.store.dispatch(cartActions.getCarItems())
+
   }
   //oninit action dispatch get user
 
