@@ -48,8 +48,6 @@ const authFeature = createFeature({
             isLoading: true,
         })),
         on(authActions.getCurrentUserSuccess, (state, action) => {
-            // console.log(action);
-
             return {
                 ...state,
                 isLoading: false,

@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(cartActions.getCarItems())
 
   }
-  //oninit action dispatch get user
+
 
 
 }

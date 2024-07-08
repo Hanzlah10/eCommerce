@@ -10,7 +10,6 @@ export const authInterceptor: HttpInterceptorFn = (request, next) => {
         setHeaders: { Authorization: `Bearer ${token}` },
 
     });
-    console.log(token);
 
     return next(request1);
 };

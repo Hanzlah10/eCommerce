@@ -22,7 +22,6 @@ export class singleProductService {
 
     getCategoryById(id: string): Observable<CategoryInterface> {
         let url = environment.apiUrl + `/ecommerce/categories/${id}`
-        console.log(url);
         // http://localhost:8080/api/v1/ecommerce/categories/663766444b800c573bb970c9
         return this.http.get<ResponseSingleCategoryAPI>(url).pipe(map(res => res.data))
     }

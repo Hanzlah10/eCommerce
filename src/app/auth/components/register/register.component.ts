@@ -33,7 +33,6 @@ export class RegisterComponent {
 
   onSubmit() {
     const request: RegisterRequestInterface = this.form.getRawValue()
-    console.log(request);
     this.store.dispatch(authActions.register({ request }))
   }
 }

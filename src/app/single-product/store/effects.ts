@@ -16,7 +16,6 @@ export const singleProductEffects = createEffect(
             switchMap(({ productId }) => {
                 return prodService.getSingleProduct(productId).pipe(
                     map((response: ProductInterface) => {
-                        console.log(response);
                         return singleProductActions.getProductSuccess({ product: response })
                     }),
                     catchError((error: HttpErrorResponse) =>

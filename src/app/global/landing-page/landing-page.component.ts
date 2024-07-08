@@ -45,12 +45,6 @@ export class LandingPageComponent implements OnInit {
   loadCategories(): void {
     this.categoryService.getAllCategories().subscribe(data => {
       this.categories = data.categories;
-      // this.totalPages = data.totalPages;
-      // this.currentPage = data.page;
-      console.log(data);  // Process the data as needed
-      console.log(this.categories);
-      // this.store.dispatch(authActions.getCurrentUser())
-
     });
   }
 

@@ -43,7 +43,6 @@ export const addtoCartEffect = createEffect(
             switchMap(({ productId, quantity }) => {
                 return CartService.updateUserCart(productId, quantity).pipe(map(
                     (cartItem: CartInterface) => {
-                        console.log(quantity + " from egge");
 
                         messageService.add({ severity: 'success', summary: 'Updated Cart', detail: 'Updated Cart successfully', life: 800 });
                         return cartActions.addToCartSuccess(cartItem)

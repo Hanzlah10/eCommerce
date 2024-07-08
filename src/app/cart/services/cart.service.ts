@@ -4,9 +4,7 @@ import { Observable, map, retry } from "rxjs";
 import { CartInterface } from "../types/cart.interface";
 import { environment } from "../../../environments/environment.development";
 import { CartResponseAPI } from "../../Shared/types/respose.interface";
-import { ProductInterface } from "../../products page/types/products.interface";
 import { PersistenceService } from "../../Shared/services/persistence.service";
-import { CartItemInterface } from "../types/cartItem.interface";
 
 @Injectable({
     providedIn: 'root'

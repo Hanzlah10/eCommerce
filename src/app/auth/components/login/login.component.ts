@@ -35,7 +35,6 @@ export class LoginComponent {
 
   onSubmit() {
     const request: LoginRequestInterface = this.form.getRawValue()
-    // console.log(request);
     this.store.dispatch(authActions.login({ request }))
   }
 

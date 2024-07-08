@@ -16,7 +16,6 @@ export const ProductsEffect = createEffect(
             switchMap(({ categoryId }) => {
                 return getProductService.getAllProducts(categoryId).pipe(
                     map((response: ProductsByCategoryWithPagination) => {
-                        // console.log(response);
                         return ProductsByCategoryAction.getProductsSuccess({ response })
                     }),
                     catchError((errorResponse: HttpErrorResponse) =>

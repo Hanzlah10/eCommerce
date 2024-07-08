@@ -15,7 +15,6 @@ export class getProductsService {
 
     getAllProducts(catId: string): Observable<ProductsByCategoryWithPagination> {
         let url = environment.apiUrl + `/ecommerce/products/category/${catId}`;
-        console.log(url);
         return this.http.get<ResponseProductsAPI>(url).pipe(map(res => res.data))
     }
 }
