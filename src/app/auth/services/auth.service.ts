@@ -72,4 +72,9 @@ export class AuthService {
     return this.http.post(url, options)
   }
 
+  forgotPassword(email: string) {
+    const url = `${environment.apiUrl}/users/forgot-password`
+    return this.http.post(url, email)
+  }
+
 }

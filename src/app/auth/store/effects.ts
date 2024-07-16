@@ -9,6 +9,8 @@ import { PersistenceService } from "../../Shared/services/persistence.service";
 import { AuthResponseInterface } from "../types/authResponse.interface";
 import { MessageService } from "primeng/api";
 import { CurrentUserInterface } from "../../Shared/types/currentUser.interface";
+import { Store } from "@ngrx/store";
+import { cartActions } from "../../cart/store/actions";
 
 export const registerEffects = createEffect(
     (
@@ -41,6 +43,7 @@ export const loginEffect = createEffect(
         authService = inject(AuthService),
         actions$ = inject(Actions),
         persistenceService = inject(PersistenceService),
+        store = inject(Store)
     ) => {
         return actions$.pipe(
             ofType(authActions.login),
@@ -49,6 +52,7 @@ export const loginEffect = createEffect(
                     map((authResponse: AuthResponseInterface) => {
                         persistenceService.set('accessToken', authResponse.accessToken);
                         persistenceService.set('refreshToken', authResponse.refreshToken);
+                        store.dispatch(cartActions.getCarItems())
                         return authActions.loginSuccess({ currentUser: authResponse.user })
                     }),
                     catchError((errorResponse: HttpErrorResponse) =>

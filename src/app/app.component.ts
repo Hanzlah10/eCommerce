@@ -7,6 +7,7 @@ import { FooterComponent } from './Shared/components/footer/footer.component';
 import { authActions } from './auth/store/actions';
 import { Store } from '@ngrx/store';
 import { cartActions } from './cart/store/actions';
+import { selectCurrentUser } from './auth/store/reducers';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(authActions.getCurrentUser())
-    this.store.dispatch(cartActions.getCarItems())
+
+    let currentUser = this.store.select(selectCurrentUser)
+    if (currentUser) {
+      this.store.dispatch(cartActions.getCarItems())
+    }
 
   }
 
