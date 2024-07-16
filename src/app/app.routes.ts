@@ -20,8 +20,11 @@ export const routes: Routes = [
     {
         path: 'products/:categoryName/:productId',
         loadChildren: () => import('./single-product/single-prod.routes').then(m => m.SingleProdRoute)
+    },
+    {
+        path: 'checkout',
+        loadChildren: () => import('./checkout/checkout.routes').then(m => m.checkoutRoutes)
     }
-
 ];
 
 

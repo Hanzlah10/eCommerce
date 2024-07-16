@@ -6,11 +6,12 @@ import { cartActions } from './store/actions';
 import { combineLatest } from 'rxjs';
 import { PrimengModule } from '../Modules/primeng.module';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, PrimengModule],
+  imports: [CommonModule, PrimengModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
   providers: [ConfirmationService, MessageService]

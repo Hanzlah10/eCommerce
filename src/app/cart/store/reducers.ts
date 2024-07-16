@@ -46,7 +46,8 @@ export const {
     reducer: cartReducer,
     selectCartTotal,
     selectDiscountedTotal,
-    selectItems
+    selectItems,
+    selectCartState
 } = cartFeature
 
 
