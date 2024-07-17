@@ -10,11 +10,11 @@ import { Component } from '@angular/core';
 })
 export class CarouselComponent {
   slides = [
-    '../../../../assets/images/sale3.jpg',
+    '../../../../assets/images/sale5.jpg',
     '../../../../assets/images/sale2.jpg',
     '../../../../assets/images/sale3.jpg',
     '../../../../assets/images/sale4.jpg',
-    '../../../../assets/images/sale5.jpg'
+    '../../../../assets/images/sale1.jpg'
   ];
 
   currentSlide = 0;
@@ -27,15 +27,23 @@ export class CarouselComponent {
   startSlideShow() {
     this.slideInterval = setInterval(() => {
       this.nextSlide();
-    }, 3500);
+    }, 4000);
   }
 
   nextSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+    if (this.currentSlide < this.slides.length - 1) {
+      this.currentSlide++;
+    } else {
+      this.currentSlide = 0; // Loop back to the first slide
+    }
   }
 
   prevSlide() {
-    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+    if (this.currentSlide > 0) {
+      this.currentSlide--;
+    } else {
+      this.currentSlide = this.slides.length - 1; // Loop to the last slide
+    }
   }
 
   selectSlide(index: number) {
@@ -45,5 +53,10 @@ export class CarouselComponent {
   ngOnDestroy() {
     clearInterval(this.slideInterval);
   }
+
+  // getTransformValue() {
+  //   const slideWidth = 100 / this.slides.length; // Assuming equal width slides
+  //   return `translateX(-${this.currentSlide * slideWidth}%)`;
+  // }
 }
 

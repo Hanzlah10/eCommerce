@@ -7,10 +7,9 @@ import { CommonModule } from "@angular/common";
 @Component({
     selector: 'app-checkout',
     imports: [FormsModule, CommonModule],
-    styleUrl: './checkout.component.css',
     templateUrl: './checkout.component.html',
-    standalone: true
-
+    standalone: true,
+    styleUrl: './checkout.component.css'
 })
 
 export class CheckoutComponent {
