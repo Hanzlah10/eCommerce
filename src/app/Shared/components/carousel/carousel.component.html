@@ -1,70 +1,27 @@
-<div id="default-carousel" class="container mx-auto " data-carousel="slide">
-    <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96 ">
-        <!-- Item 1 -->
-        <div class="duration-700 ease-in-out" data-carousel-item>
-            <img src="../../../assets/images/sale1.jpg"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 2 -->
-        <div class="duration-700 ease-in-out" data-carousel-item>
-            <img src="/../../../assets/images/sale2.jpg"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="duration-700 ease-in-out" data-carousel-item>
-            <img src="../../../assets/images/sale3.jpg"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 4 -->
-        <div class="duration-700 ease-in-out" data-carousel-item>
-            <img src="../../../assets/images/sale4.jpg"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="duration-700 ease-in-out" data-carousel-item>
-            <img src="../../../assets/images/sale5.jpg"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
+<div class="carousel-container relative lg:w-4xl w-full  mx-auto overflow-hidden rounded-lg h-72 lg:h-[500px]">
+    <div class="carousel-slides flex transition-transform duration-500"
+        [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+        <img *ngFor="let slide of slides" [src]="slide" class="carousel-slide w-full h-auto object-cover">
     </div>
-    <!-- Slider indicators -->
-    <div class="absolute  flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-            data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-            data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-            data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-            data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
-            data-carousel-slide-to="4"></button>
+    <div class="carousel-controls absolute inset-0 flex justify-between items-center px-4">
+        <button
+            class="carousel-button rounded-full p-2 bg-white/70 dark:bg-gray-800/70 hover:bg-white dark:hover:bg-gray-800"
+            (click)="prevSlide()">
+            <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button
+            class="carousel-button rounded-full p-2 bg-white/70 dark:bg-gray-800/70 hover:bg-white dark:hover:bg-gray-800"
+            (click)="nextSlide()">
+            <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
     </div>
-    <!-- Slider controls -->
-    <button type="button"
-        class="absolute top-0 start-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-prev>
-        <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5 1 1 5l4 4" />
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button"
-        class="absolute top-0 end-0  flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-next>
-        <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="m1 9 4-4-4-4" />
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
+    <div class="carousel-indicators absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+        <span *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlide"
+            class="indicator w-3 h-3 bg-white dark:bg-gray-800 rounded-full cursor-pointer"
+            (click)="selectSlide(i)"></span>
+    </div>
 </div>
