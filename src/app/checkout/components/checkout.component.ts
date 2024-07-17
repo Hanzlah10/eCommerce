@@ -14,7 +14,6 @@ import { CommonModule } from "@angular/common";
 
 export class CheckoutComponent {
     constructor(private store: Store) { }
-
-
     TotalData$ = this.store.select(selectCartState)
 }
+
