@@ -1,6 +1,7 @@
 import { AuthResponseInterface } from "../../auth/types/authResponse.interface";
 import { CartInterface } from "../../cart/types/cart.interface";
 import { CartItemInterface } from "../../cart/types/cartItem.interface";
+import { AddressInterface } from "../../checkout/types/Address.interface";
 import { ProductInterface, ProductsByCategoryWithPagination } from "../../products page/types/products.interface";
 import { CategoryInterface, PaginationInterface } from "./category.interface";
 import { CurrentUserInterface } from "./currentUser.interface";
@@ -48,13 +49,13 @@ export interface CartResponseAPI {
     statusCode: number;
     success: boolean;
 }
+export interface AddressResponse {
+    data: AddressInterface;
+    message: string;
+    statusCode: number;
+    success: boolean;
+}
 
-// export interface ResponseRemovedCartItemAPI {
-//     data: [CartItemInterface];
-//     message: string;
-//     statusCode: number;
-//     success: boolean;
-// }
 
 
 
