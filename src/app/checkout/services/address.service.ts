@@ -5,7 +5,7 @@ import { ResponseAddressAPI, ResponsePaginatedAddressesAPI } from "../../Shared/
 import { environment } from "../../../environments/environment.development";
 import { Observable, map } from "rxjs";
 import { PersistenceService } from "../../Shared/services/persistence.service";
-import { PaginatedAddresses } from "../types/paginatedAddresses.interface";
+import { PaginatedAddressesInterface } from "../types/paginatedAddresses.interface";
 
 @Injectable({
     providedIn: 'root'
@@ -32,7 +32,8 @@ export class AddressService {
         return this.http.post<ResponseAddressAPI>(url, address, options).pipe(map(res => res.data))
     }
 
-    getAddress(): Observable<PaginatedAddresses> {
+    addAddress2(address: Address) {
+
         const token = this.persistenceService.get('accessToken')
 
         const headers = new HttpHeaders({
@@ -41,7 +42,23 @@ export class AddressService {
         });
         const options = { headers };
 
-        let url = environment.apiUrl + '/ecommerce/categories?page=1&limit=5'
+
+        let url = environment.apiUrl + '/ecommerce/addresses'
+        return this.http.post<ResponseAddressAPI>(url, address, options).pipe(map(res => {
+            console.log(res.data);
+        }))
+    }
+
+    getAddress(): Observable<PaginatedAddressesInterface> {
+        const token = this.persistenceService.get('accessToken')
+
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
+        const options = { headers };
+
+        let url = environment.apiUrl + '/ecommerce/addresses?page=1&limit=10'
         return this.http.get<ResponsePaginatedAddressesAPI>(url, options).pipe(map(res => res.data))
 
     }

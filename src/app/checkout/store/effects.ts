@@ -30,3 +30,31 @@ export const AddAddressEffects = createEffect(
         functional: true
     }
 )
+
+export const GetAddressEffects = createEffect(
+    (
+        actions$ = inject(Actions),
+        addressService = inject(AddressService)
+    ) => {
+        return actions$.pipe(
+            ofType(checkoutActions.getAddress),
+            switchMap(() => {
+                return addressService.getAddress().pipe(
+                    map((response) => {
+                        console.log(response);
+
+                        return checkoutActions.getAddressSuccess(response)
+                    }),
+                    catchError((e: HttpErrorResponse) => (
+                        of(
+                            checkoutActions.getAddressFailure(e.error)
+                        )
+                    ))
+                )
+            })
+        )
+    },
+    {
+        functional: true
+    }
+)

@@ -12,6 +12,10 @@ const CheckoutFeature = createFeature({
     name: 'checkout',
     reducer: createReducer(
         initialState,
+        on(checkoutActions.getAddressSuccess, (state, action) => ({
+            ...state,
+            addresses: action.addresses
+        })),
         on(checkoutActions.addAddressSuccess, (state, action) => ({
             ...state,
             addresses: [...state.addresses, action]

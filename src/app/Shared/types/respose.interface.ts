@@ -2,7 +2,7 @@ import { AuthResponseInterface } from "../../auth/types/authResponse.interface";
 import { CartInterface } from "../../cart/types/cart.interface";
 import { CartItemInterface } from "../../cart/types/cartItem.interface";
 import { AddressInterface } from "../../checkout/types/Address.interface";
-import { PaginatedAddresses } from "../../checkout/types/paginatedAddresses.interface";
+import { PaginatedAddressesInterface } from "../../checkout/types/paginatedAddresses.interface";
 import { ProductInterface, ProductsByCategoryWithPagination } from "../../products page/types/products.interface";
 import { CategoryInterface, PaginationInterface } from "./category.interface";
 import { CurrentUserInterface } from "./currentUser.interface";
@@ -58,7 +58,7 @@ export interface ResponseAddressAPI {
 }
 
 export interface ResponsePaginatedAddressesAPI {
-    data: PaginatedAddresses;
+    data: PaginatedAddressesInterface;
     message: string;
     statusCode: number;
     success: boolean;

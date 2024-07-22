@@ -1,6 +1,6 @@
 import { AddressInterface } from "./Address.interface";
 
-export interface PaginatedAddresses {
+export interface PaginatedAddressesInterface {
     addresses: AddressInterface[];
     hasNextPage: boolean;
     hasPrevPage: boolean;

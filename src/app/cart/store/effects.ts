@@ -6,7 +6,6 @@ import { catchError, map, of, switchMap, take, tap } from "rxjs";
 import { cartService } from "../services/cart.service";
 import { CartInterface } from "../types/cart.interface";
 import { HttpErrorResponse } from "@angular/common/http";
-import { CartItemInterface } from "../types/cartItem.interface";
 
 export const getItemEffect = createEffect(
     (
