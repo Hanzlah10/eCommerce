@@ -5,9 +5,18 @@ export interface AddressInterface {
     addressLine2: string;
     city: string;
     country: string;
-    createdAt: string;
-    owner: string;
     pincode: string;
     state: string;
+    createdAt: string;
+    owner: string;
     updatedAt: string;
+}
+
+export interface Address {
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    state: string;
+    country: string;
+    pincode: string;
 }

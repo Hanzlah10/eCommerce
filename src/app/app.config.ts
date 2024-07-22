@@ -13,8 +13,10 @@ import { productFeatureKey, productReducer } from './products page/store/reducer
 import * as ProductsEffect from './products page/store/effects';
 import * as SingleProductsEffect from './single-product/store/effects';
 import * as CartEffects from './cart/store/effects';
+import * as CheckoutEffects from './checkout/store/effects'
 import { singleProdFeatureKey, singleProdReducer } from './single-product/store/reducers';
 import { cartFeatureKey, cartReducer } from './cart/store/reducers';
+import { CheckoutFeatureKey, CheckoutReducer } from './checkout/store/reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,11 +24,12 @@ export const appConfig: ApplicationConfig = {
     // provideHttpClient(withInterceptors([authInterceptor])),
     provideHttpClient(),
     provideStore(),
-    provideEffects(authEffects, ProductsEffect, SingleProductsEffect, CartEffects),
+    provideEffects(authEffects, ProductsEffect, SingleProductsEffect, CartEffects, CheckoutEffects),
     provideState(authFeatureKey, authReducer),
     provideState(productFeatureKey, productReducer),
     provideState(singleProdFeatureKey, singleProdReducer),
     provideState(cartFeatureKey, cartReducer),
+    provideState(CheckoutFeatureKey, CheckoutReducer),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     MessageService,
     provideAnimations(),

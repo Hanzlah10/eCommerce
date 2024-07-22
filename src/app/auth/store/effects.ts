@@ -154,4 +154,3 @@ export const logoutEffect = createEffect(
     functional: true
 }
 )
-

@@ -1,7 +1,6 @@
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
 import { ValidationErrors } from "@angular/forms";
 import { CartInterface } from "../types/cart.interface";
-import { CartResponseAPI } from "../../Shared/types/respose.interface";
 
 export const cartActions = createActionGroup({
 
