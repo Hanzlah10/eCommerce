@@ -19,8 +19,9 @@ import { PrimengModule } from '../../../Modules/primeng.module';
 export class NavbarComponent {
 
 
-  isCartVisible = false;
+  isCartVisible = false
   showDropDown = false
+  mobileMenuOpen = false
   constructor(private store: Store) { }
 
   data$ = combineLatest({
@@ -43,6 +44,7 @@ export class NavbarComponent {
   toggleDropDown() {
     this.showDropDown = !this.showDropDown
   }
+
 
 
 }

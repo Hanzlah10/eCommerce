@@ -1,4 +1,4 @@
-<div class="carousel-container relative lg:w-4xl w-full  mx-auto overflow-hidden rounded-lg h-72 lg:h-[500px]">
+<div class="carousel-container relative lg:w-4xl w-full  mx-auto overflow-hidden   lg:h-[500px]">
     <div class="carousel-slides flex transition-transform duration-500"
         [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
         <img *ngFor="let slide of slides" [src]="slide" class="carousel-slide w-full h-auto object-cover ">
