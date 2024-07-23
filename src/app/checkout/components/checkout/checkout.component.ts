@@ -25,16 +25,22 @@ export class CheckoutComponent implements OnInit {
         CartState: this.store.select(selectCartState),
         AddressState: this.store.select(selectAddresses)
     })
-
     isAddingAddress: boolean = false
+
+
+    ngOnInit(): void {
+        this.store.dispatch(checkoutActions.getAddress())
+    }
+
+    editAddress(id:string){
+        
+    }
 
     toggleIsAddingAddress() {
         this.isAddingAddress = !this.isAddingAddress
     }
 
-    ngOnInit(): void {
-        this.store.dispatch(checkoutActions.getAddress())
-    }
+
     removeItem(productId: string) {
         this.store.dispatch(cartActions.removeCartItem({ productId }))
     }

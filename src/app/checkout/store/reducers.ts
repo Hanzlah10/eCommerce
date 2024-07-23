@@ -1,6 +1,7 @@
 import { createFeature, createReducer, on } from "@ngrx/store";
 import { AddressStateInterface } from "../types/addressState.interface";
 import { checkoutActions } from "./actions";
+import { AddressInterface } from "../types/Address.interface";
 
 const initialState: AddressStateInterface = {
     addresses: [],
@@ -19,6 +20,24 @@ const CheckoutFeature = createFeature({
         on(checkoutActions.addAddressSuccess, (state, action) => ({
             ...state,
             addresses: [...state.addresses, action]
+        })),
+        on(checkoutActions.updateAddressSuccess, (state, action) => {
+
+            let id = action._id
+            for (let address of initialState.addresses) {
+                if (id == address._id) {
+                    address = action
+                }
+            }
+            return {
+                ...state
+            }
+        }),
+
+
+        on(checkoutActions.deleteAddressSuccess, (state, action) => ({
+            ...state,
+            // addresses: [...state.addresses, action]
         }))
     )
 })

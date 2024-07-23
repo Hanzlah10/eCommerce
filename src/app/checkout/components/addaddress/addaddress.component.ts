@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { checkoutActions } from '../../store/actions';
-import { AddressService } from '../../services/address.service';
 
 @Component({
   selector: 'app-addaddress',
@@ -13,11 +12,7 @@ import { AddressService } from '../../services/address.service';
   styleUrl: './addaddress.component.css'
 })
 export class AddAddressComponent {
-
-
-
-
-  constructor(private fb: FormBuilder, private store: Store, private service: AddressService) { }
+  constructor(private fb: FormBuilder, private store: Store) { }
 
   form = this.fb.nonNullable.group({
     addressLine1: ['', Validators.required],
@@ -30,8 +25,6 @@ export class AddAddressComponent {
 
   onSubmit() {
     let address = this.form.getRawValue()
-    console.log(address);
-    // this.service.addAddress2(address)
     this.store.dispatch(checkoutActions.addAddress(address))
   }
 }

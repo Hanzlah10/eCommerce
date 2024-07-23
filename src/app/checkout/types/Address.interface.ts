@@ -20,3 +20,7 @@ export interface Address {
     country: string;
     pincode: string;
 }
+
+export interface DeletedAddressInterface {
+    deletedAddress: AddressInterface
+}

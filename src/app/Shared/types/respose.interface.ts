@@ -1,7 +1,7 @@
 import { AuthResponseInterface } from "../../auth/types/authResponse.interface";
 import { CartInterface } from "../../cart/types/cart.interface";
 import { CartItemInterface } from "../../cart/types/cartItem.interface";
-import { AddressInterface } from "../../checkout/types/Address.interface";
+import { AddressInterface, DeletedAddressInterface } from "../../checkout/types/Address.interface";
 import { PaginatedAddressesInterface } from "../../checkout/types/paginatedAddresses.interface";
 import { ProductInterface, ProductsByCategoryWithPagination } from "../../products page/types/products.interface";
 import { CategoryInterface, PaginationInterface } from "./category.interface";
@@ -59,6 +59,12 @@ export interface ResponseAddressAPI {
 
 export interface ResponsePaginatedAddressesAPI {
     data: PaginatedAddressesInterface;
+    message: string;
+    statusCode: number;
+    success: boolean;
+}
+export interface ResponseDeletedAddressesAPI {
+    data: DeletedAddressInterface;
     message: string;
     statusCode: number;
     success: boolean;
