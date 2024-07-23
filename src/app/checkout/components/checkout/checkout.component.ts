@@ -8,57 +8,52 @@ import { AddAddressComponent } from "../addaddress/addaddress.component";
 import { checkoutActions } from "../../store/actions";
 import { combineLatest } from "rxjs";
 import { selectAddresses } from "../../store/reducers";
-import { AddressService } from "../../services/address.service";
 import { cartActions } from "../../../cart/store/actions";
+import { Address } from "../../types/Address.interface";
 
 @Component({
     selector: 'app-checkout',
     imports: [FormsModule, CommonModule, RouterModule, AddAddressComponent],
     templateUrl: './checkout.component.html',
     standalone: true,
-    styleUrl: './checkout.component.css'
+    styleUrls: ['./checkout.component.css']
 })
-
 export class CheckoutComponent implements OnInit {
 
     TotalData$ = combineLatest({
         CartState: this.store.select(selectCartState),
         AddressState: this.store.select(selectAddresses)
-    })
-    isAddingAddress: boolean = false
+    });
+    isAddingAddress: boolean = false;
 
+    constructor(private store: Store) { }
 
     ngOnInit(): void {
-        this.store.dispatch(checkoutActions.getAddress())
-    }
-
-    editAddress(id:string){
-        
+        this.store.dispatch(checkoutActions.getAddress());
     }
 
     toggleIsAddingAddress() {
-        this.isAddingAddress = !this.isAddingAddress
+        this.isAddingAddress = !this.isAddingAddress;
     }
 
+    handleFormData(address: Address) {
+        this.store.dispatch(checkoutActions.addAddress(address));
+        this.toggleIsAddingAddress(); // Hide the add address form after submission
+    }
 
     removeItem(productId: string) {
-        this.store.dispatch(cartActions.removeCartItem({ productId }))
+        this.store.dispatch(cartActions.removeCartItem({ productId }));
     }
-
 
     increment(productId: string, count: number) {
         if (count < 10) {
-            this.store.dispatch(cartActions.addToCart({ productId: productId, quantity: ++count }))
+            this.store.dispatch(cartActions.addToCart({ productId: productId, quantity: ++count }));
         }
     }
 
     decrement(productId: string, count: number) {
         if (count > 1) {
-            this.store.dispatch(cartActions.addToCart({ productId: productId, quantity: --count }))
+            this.store.dispatch(cartActions.addToCart({ productId: productId, quantity: --count }));
         }
     }
-    constructor(private store: Store) { }
-
-
 }
-

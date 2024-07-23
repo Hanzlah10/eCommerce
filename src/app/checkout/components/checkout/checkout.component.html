@@ -97,7 +97,7 @@
                 </div>
 
                 <ng-container *ngIf="isAddingAddress">
-                    <app-addaddress></app-addaddress>
+                    <app-addaddress (formData)="handleFormData($event)"></app-addaddress>
                 </ng-container>
 
                 <ng-container *ngIf="!isAddingAddress">
