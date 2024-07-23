@@ -12,10 +12,10 @@ export const checkoutActions = createActionGroup({
         'Get Address': emptyProps(),
         'Get Address Success': props<PaginatedAddressesInterface>(),
         'Get Address Failure': props<BackendErrorsInterface>(),
-        'Update Address': props<Address>(),
+        'Update Address': props<{ id: string | null, address: Address }>(),
         'Update Address Success': props<AddressInterface>(),
         'Update Address Failure': props<BackendErrorsInterface>(),
-        'Delete Address': props<{ addressId: string }>(),
+        'Delete Address': props<{ id: string | null }>(),
         'Delete Address Success': props<DeletedAddressInterface>(),
         'Delete Address Failure': props<BackendErrorsInterface>(),
     }

@@ -46,7 +46,7 @@ export class AddressService {
 
     }
 
-    updateAddress(addressId: string, address: Address): Observable<AddressInterface> {
+    updateAddress(addressId: string | null, address: Address): Observable<AddressInterface> {
 
         const token = this.persistenceService.get('accessToken')
 
@@ -61,7 +61,7 @@ export class AddressService {
         return this.http.patch<ResponseAddressAPI>(url, address, options).pipe(map(res => res.data))
     }
 
-    deleteAddress(addressId: string): Observable<DeletedAddressInterface> {
+    deleteAddress(addressId: string | null): Observable<DeletedAddressInterface> {
         const token = this.persistenceService.get('accessToken')
 
         const headers = new HttpHeaders({
@@ -72,6 +72,19 @@ export class AddressService {
 
         let url = environment.apiUrl + `/ecommerce/addresses/${addressId}`
         return this.http.delete<ResponseDeletedAddressesAPI>(url, options).pipe(map(res => res.data))
+    }
+
+    getAddressById(addressId: string): Observable<AddressInterface> {
+        const token = this.persistenceService.get('accessToken')
+
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
+        const options = { headers };
+
+        let url = environment.apiUrl + `/ecommerce/addresses/${addressId}`
+        return this.http.get<ResponseAddressAPI>(url, options).pipe(map(res => res.data))
     }
 
 }

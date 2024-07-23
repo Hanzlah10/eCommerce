@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Address } from '../../types/Address.interface';
 
@@ -10,9 +10,12 @@ import { Address } from '../../types/Address.interface';
   templateUrl: './addaddress.component.html',
   styleUrls: ['./addaddress.component.css']
 })
-export class AddAddressComponent {
-
+export class AddAddressComponent implements OnChanges {
+  @Input() addressToEdit: Address | null = null
+  @Input() formStatus: string = ''
   @Output() formData = new EventEmitter<Address>();
+
+
   constructor(private fb: FormBuilder) { }
 
   form = this.fb.nonNullable.group({
@@ -23,6 +26,13 @@ export class AddAddressComponent {
     pincode: ['', Validators.required],
     country: ['', Validators.required],
   });
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['addressToEdit'] && this.addressToEdit) {
+      this.form.patchValue(this.addressToEdit);
+    }
+  }
+
 
   onSubmit() {
     if (this.form.valid) {

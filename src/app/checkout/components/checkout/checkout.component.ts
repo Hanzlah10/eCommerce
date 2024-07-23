@@ -10,6 +10,7 @@ import { combineLatest } from "rxjs";
 import { selectAddresses } from "../../store/reducers";
 import { cartActions } from "../../../cart/store/actions";
 import { Address } from "../../types/Address.interface";
+import { AddressService } from "../../services/address.service";
 
 @Component({
     selector: 'app-checkout',
@@ -25,8 +26,11 @@ export class CheckoutComponent implements OnInit {
         AddressState: this.store.select(selectAddresses)
     });
     isAddingAddress: boolean = false;
+    addressToEdit: Address | null = null;
+    addressToEditId: string | null = null
+    formStatus: string = 'Add'
 
-    constructor(private store: Store) { }
+    constructor(private store: Store, private addressService: AddressService) { }
 
     ngOnInit(): void {
         this.store.dispatch(checkoutActions.getAddress());
@@ -34,10 +38,17 @@ export class CheckoutComponent implements OnInit {
 
     toggleIsAddingAddress() {
         this.isAddingAddress = !this.isAddingAddress;
+        this.addressToEdit = null
+
     }
 
     handleFormData(address: Address) {
-        this.store.dispatch(checkoutActions.addAddress(address));
+        if (this.addressToEdit) {
+            this.store.dispatch(checkoutActions.updateAddress({ id: this.addressToEditId, address: address }))
+            this.addressToEdit = null
+        } else {
+            this.store.dispatch(checkoutActions.addAddress(address))
+        }
         this.toggleIsAddingAddress(); // Hide the add address form after submission
     }
 
@@ -56,4 +67,19 @@ export class CheckoutComponent implements OnInit {
             this.store.dispatch(cartActions.addToCart({ productId: productId, quantity: --count }));
         }
     }
+
+    editAddress(id: string) {
+        this.addressService.getAddressById(id).subscribe((address) => {
+            this.addressToEdit = address;
+            this.addressToEditId = id
+            this.formStatus = 'Update'
+            this.isAddingAddress = true; // Show the form for editing
+        })
+    }
+
+    deleteAddress(id: string) {
+        this.store.dispatch(checkoutActions.deleteAddress({ id }))
+    }
+
+
 }

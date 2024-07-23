@@ -22,22 +22,16 @@ const CheckoutFeature = createFeature({
             addresses: [...state.addresses, action]
         })),
         on(checkoutActions.updateAddressSuccess, (state, action) => {
-
-            let id = action._id
-            for (let address of initialState.addresses) {
-                if (id == address._id) {
-                    address = action
-                }
-            }
             return {
-                ...state
+                ...state,
+                addresses: state.addresses.map(addr =>
+                    addr._id === action._id ? action : addr
+                )
             }
         }),
-
-
         on(checkoutActions.deleteAddressSuccess, (state, action) => ({
             ...state,
-            // addresses: [...state.addresses, action]
+            addresses: state.addresses.filter(address => address._id != action.deletedAddress._id)
         }))
     )
 })
