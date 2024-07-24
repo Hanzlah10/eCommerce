@@ -25,4 +25,17 @@ export class CouponService {
         return this.http.post<CartResponseAPI>(url, { couponCode: couponId }, options).pipe(map(res => res.data))
 
     }
+    removeCoupon(couponId: string | null): Observable<CartInterface> {
+        const token = this.persistenceService.get('accessToken')
+
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
+        const options = { headers };
+        let url = environment.apiUrl + `/ecommerce/coupons/c/remove`
+
+        return this.http.post<CartResponseAPI>(url, { couponCode: couponId }, options).pipe(map(res => res.data))
+
+    }
 }

@@ -153,3 +153,34 @@ export const applyCouponEffect = createEffect(
         functional: true
     }
 )
+export const removeCouponEffect = createEffect(
+    (
+        actions$ = inject(Actions),
+        messageService = inject(MessageService),
+        couponService = inject(CouponService)
+
+
+    ) => {
+        return actions$.pipe(
+            ofType(checkoutActions.removeCoupon),
+            switchMap((data) => {
+                return couponService.removeCoupon(data.id).pipe(
+                    map((response) => {
+                        console.log(response);
+                        messageService.add({ severity: 'warn', summary: 'Coupon Removed', detail: 'Coupon Removed Successfully', life: 800 });
+
+                        return checkoutActions.removeCouponSuccess(response)
+                    }),
+                    catchError((e: HttpErrorResponse) => (
+                        of(
+                            checkoutActions.removeCouponFailure(e.error)
+                        )
+                    ))
+                )
+            })
+        )
+    },
+    {
+        functional: true
+    }
+)

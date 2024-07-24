@@ -1,7 +1,6 @@
 import { createFeature, createReducer, on } from "@ngrx/store";
 import { AddressStateInterface } from "../types/addressState.interface";
 import { checkoutActions } from "./actions";
-import { AddressInterface } from "../types/Address.interface";
 
 const initialState: AddressStateInterface = {
     addresses: [],

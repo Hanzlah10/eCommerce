@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { Form, FormsModule } from "@angular/forms";
+import { Form, FormsModule, NgForm } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import { selectCartState } from "../../../cart/store/reducers";
+import { selectCartState, selectCoupon } from "../../../cart/store/reducers";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { AddAddressComponent } from "../addaddress/addaddress.component";
@@ -24,7 +24,7 @@ export class CheckoutComponent implements OnInit {
 
     TotalData$ = combineLatest({
         CartState: this.store.select(selectCartState),
-        AddressState: this.store.select(selectAddresses)
+        AddressState: this.store.select(selectAddresses),
     });
     isAddingAddress: boolean = false;
     addressToEdit: Address | null = null;
@@ -86,22 +86,14 @@ export class CheckoutComponent implements OnInit {
         this.store.dispatch(checkoutActions.deleteAddress({ id }))
     }
 
-    applyCoupon(CouponForm: CouponFormInterface) {
-        this.store.dispatch(checkoutActions.applyCoupon({ id: CouponForm.coupon }))
+    applyCoupon(CouponFormValue: CouponFormInterface, CouponForm: NgForm) {
+        this.store.dispatch(checkoutActions.applyCoupon({ id: CouponFormValue.coupon }))
+        CouponForm.reset();
     }
 
-
-
-    appliedCoupon: any = {
-        name: 'Summer Sale',
-        code: 'SUMMER2024',
-        startDate: new Date('2024-06-01'),
-        endDate: new Date('2024-08-31')
-    };
-
-    removeCoupon() {
-        // Implement the logic to remove the coupon
-        this.appliedCoupon = null;
+    removeCoupon(id: string) {
+        this.store.dispatch(checkoutActions.removeCoupon({ id }))
+        // couponForm.reset();
     }
 
 

@@ -22,6 +22,9 @@ export const checkoutActions = createActionGroup({
         'Apply Coupon': props<{ id: string | null }>(),
         'Apply Coupon Success': props<CartInterface>(),
         'Apply Coupon Failure': props<BackendErrorsInterface>(),
+        'Remove Coupon': props<{ id: string | null }>(),
+        'Remove Coupon Success': props<CartInterface>(),
+        'Remove Coupon Failure': props<BackendErrorsInterface>(),
 
     }
 })

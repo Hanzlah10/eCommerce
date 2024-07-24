@@ -230,13 +230,18 @@
                             <input type="text" id="voucher" name="coupon" ngModel
                                 class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                                 placeholder="" required />
-                            <button type="button" (click)="applyCoupon(couponForm.value)"
+                            <button type="button" (click)="applyCoupon(couponForm.value,couponForm)"
                                 class="flex items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-400">Apply</button>
                         </form>
                     </div>
+
+
+
+
+                    <!-- Coupon -->
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Applied Coupons</h3>
-                    <div *ngIf="appliedCoupon"
-                        class="mt-4 p-4 bg-blue-50 dark:bg-blue-900 rounded-lg border-2 border-dashed border-blue-300 dark:border-blue-600 relative overflow-hidden">
+                    <div *ngIf="data.CartState.coupon"
+                        class="relative p-4 bg-blue-50 dark:bg-blue-900 rounded-lg border-2 border-dashed border-blue-300 dark:border-blue-600 overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-blue-100 dark:hover:bg-blue-800">
                         <!-- Background pattern -->
                         <div class="absolute inset-0 opacity-10 dark:opacity-20">
                             <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"
@@ -249,45 +254,66 @@
                         <!-- Coupon content -->
                         <div class="relative z-10">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-xl font-bold text-blue-700 dark:text-blue-300">{{ appliedCoupon.name }}
-                                </h3>
-                                <button (click)="removeCoupon()"
-                                    class="text-blue-500 hover:text-blue-600 dark:text-blue-300 dark:hover:text-blue-200">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
+                                <div class="flex items-center space-x-3">
+                                    <h3 class="text-xl font-bold text-blue-700 dark:text-blue-300 capitalize">
+                                        {{data.CartState.coupon.name}}</h3>
+                                    <div class="flex items-center space-x-2">
+                                        <span
+                                            class="px-2 py-1 bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-200 rounded-md font-mono text-sm font-bold">{{data.CartState.coupon.couponCode}}</span>
+
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span
+                                        class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Active</span>
+                                    <button (click)="removeCoupon(data.CartState.coupon.couponCode)"
+                                        class="text-gray-500 hover:text-red-500 transition-colors duration-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
 
-                            <div class="mt-2 flex items-center space-x-2">
-                                <span
-                                    class="px-2 py-1 bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-200 rounded-md font-mono text-sm">{{
-                                    appliedCoupon.code }}</span>
-                                <span class="text-sm text-blue-600 dark:text-blue-300">Copied to clipboard</span>
+                            <div class="mt-3 grid grid-cols-4 gap-2 text-xs">
+                                <div>
+                                    <p class="text-gray-600 dark:text-gray-400">Type</p>
+                                    <p class="font-semibold text-blue-700 dark:text-blue-300">
+                                        {{data.CartState.coupon.type}}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 dark:text-gray-400">Discount Value</p>
+                                    <p class="font-semibold text-blue-700 dark:text-blue-300">
+                                        ₹{{data.CartState.coupon.discountValue}}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 dark:text-gray-400">Min. Cart Value</p>
+                                    <p class="font-semibold text-blue-700 dark:text-blue-300">
+                                        ₹{{data.CartState.coupon.minimumCartValue}}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 dark:text-gray-400">Expires</p>
+                                    <p class="font-semibold text-blue-700 dark:text-blue-300">{{
+                                        data.CartState.coupon.expiryDate| date:'shortDate'
+                                        }}</p>
+                                </div>
                             </div>
 
-                            <div class="mt-3 text-sm text-blue-600 dark:text-blue-300">
-                                <p>Valid from {{ appliedCoupon.startDate | date:'mediumDate' }} to {{
-                                    appliedCoupon.endDate | date:'mediumDate' }}</p>
-                            </div>
 
-                            <div class="mt-3 text-xs text-blue-500 dark:text-blue-400">
-                                <p>{{ appliedCoupon.description }}</p>
-                            </div>
                         </div>
 
                         <!-- Decorative elements -->
                         <div
-                            class="absolute -left-4 top-1/2 w-8 h-8 bg-white dark:bg-gray-800 rounded-full transform -translate-y-1/2">
+                            class="absolute -left-3 top-1/2 w-6 h-6 bg-white dark:bg-gray-800 rounded-full transform -translate-y-1/2">
                         </div>
                         <div
-                            class="absolute -right-4 top-1/2 w-8 h-8 bg-white dark:bg-gray-800 rounded-full transform -translate-y-1/2">
+                            class="absolute -right-3 top-1/2 w-6 h-6 bg-white dark:bg-gray-800 rounded-full transform -translate-y-1/2">
                         </div>
                     </div>
-                    <div *ngIf="!appliedCoupon">
+                    <div *ngIf="!data.CartState.coupon">
                         <div
                             class="mt-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-blue-700 rounded-lg border border-blue-200 dark:border-blue-700 shadow-sm">
                             <div class="flex items-center space-x-3">
@@ -305,9 +331,6 @@
                     </div>
                 </ng-container>
             </div>
-
-
-
             <div class="mt-6 w-full space-y-6 sm:mt-8 lg:mt-0 lg:max-w-xs xl:max-w-md">
 
                 <div class="flow-root">
@@ -379,6 +402,11 @@
 
 
 
+                        <dl *ngIf="data.CartState.coupon" class="flex items-center justify-between gap-4 py-3">
+                            <dt class="text-base font-bold text-gray-900 dark:text-white">Coupon Name</dt>
+                            <dd class="text-base font-bold text-gray-900 dark:text-white">
+                                {{data.CartState.coupon.name}}</dd>
+                        </dl>
                         <dl class="flex items-center justify-between gap-4 py-3">
                             <dt class="text-base font-bold text-gray-900 dark:text-white">Discounted Total</dt>
                             <dd class="text-base font-bold text-gray-900 dark:text-white">

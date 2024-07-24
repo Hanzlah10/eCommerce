@@ -47,6 +47,13 @@ const cartFeature = createFeature({
             discountedTotal: action.discountedTotal,
             coupon: action.coupon
         })),
+        on(checkoutActions.removeCouponSuccess, (state, action) => ({
+            ...state,
+            items: action.items,
+            cartTotal: action.cartTotal,
+            discountedTotal: action.discountedTotal,
+            coupon: action.coupon
+        })),
     )
 })
 
@@ -56,6 +63,8 @@ export const {
     selectCartTotal,
     selectDiscountedTotal,
     selectItems,
+    selectCoupon,
+    selectErrors,
     selectCartState
 } = cartFeature
 
