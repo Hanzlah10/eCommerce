@@ -8,6 +8,7 @@ import { DarkmodeToggleComponent } from '../darkmode-toggle/darkmode-toggle.comp
 import { CartComponent } from '../../../cart/cart.component';
 import { authActions } from '../../../auth/store/actions';
 import { PrimengModule } from '../../../Modules/primeng.module';
+import { selectCartState, selectItems } from '../../../cart/store/reducers';
 
 @Component({
   selector: 'app-navbar',
@@ -27,7 +28,8 @@ export class NavbarComponent {
   constructor(private store: Store, private elementRef: ElementRef) { }
 
   data$ = combineLatest({
-    currentUser: this.store.select(selectCurrentUser)
+    currentUser: this.store.select(selectCurrentUser),
+    cartItems: this.store.select(selectItems)
   });
 
   toggleCart() {

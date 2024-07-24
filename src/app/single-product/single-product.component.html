@@ -1,174 +1,135 @@
 <ng-container *ngIf="product$|async as product">
-    <main class="flex flex-col  justify-between ">
-
-        <!-- breadcrumbs  -->
-
-        <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
-            <ul class="flex items-center">
-                <li class="cursor-pointer">
-                    <a routerLink="/">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="h-5 w-5 dark:text-white">
-                            <path
-                                d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-                            <path
-                                d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                        </svg>
-                    </a>
+    <main class="bg-gradient-to-br bg-white dark:bg-black py-12 px-4 sm:px-6 lg:px-8 transition-all duration-300">
+        <!-- Breadcrumbs -->
+        <nav class="max-w-7xl mx-auto mb-8">
+            <ol class="flex items-center  space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-center gap-1"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="currentColor" class="h-5 w-5 dark:text-white">
+                        <path
+                            d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                        <path
+                            d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                    </svg><a href="/" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a>
                 </li>
-                <li>
-                    <span class="mx-2 text-gray-500">&gt;</span>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="" class="hover:text-blue-600 dark:hover:text-blue-400 capitalize">{{categoryName}}</a>
                 </li>
-                <li class="text-gray-500 capitalize dark:text-white">
-                    {{categoryName}}
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-800 dark:text-gray-200">{{product.name}}</span>
                 </li>
-                <li>
-                    <span class="mx-2 text-gray-500">&gt;</span>
-                </li>
-                <li class="text-gray-500 capitalize dark:text-white">{{product.name}}
-                </li>
-            </ul>
+            </ol>
         </nav>
-        <!-- /breadcrumbs  -->
 
-
-        <section class="container flex-grow mx-auto max-w-[1200px] py-5 lg:grid lg:grid-cols-2 lg:py-10">
-            <!-- image gallery -->
-
-            <div class="container mx-auto px-4">
-                <img class="w-full" [src]="product.mainImage.url" alt="Main image" />
-
-                <div class="mt-3 grid grid-cols-4 gap-4">
-                    <div>
-                        <img class="cursor-pointer" [src]="product.subImages[0].url" alt="Alternate image" />
+        <div class="max-w-7xl mx-auto bg-white dark:bg-gray-800 rounded-3xl overflow-hidden 
+        shadow-[0_0_15px_rgba(59,130,246,0.5)] 
+        dark:shadow-[0_0_30px_rgba(29,78,216,0.8)] relative ">
+            <div class="lg:flex">
+                <!-- Image gallery -->
+                <div class="lg:w-1/2 bg-gray-100 dark:bg-gray-700 p-8">
+                    <div class="aspect-w-3 aspect-h-4 rounded-lg overflow-hidden">
+                        <img [src]="product.mainImage.url" alt="Main product image"
+                            class="object-cover w-full h-full transition-transform duration-300 hover:scale-110 ">
                     </div>
-
-                    <div>
-                        <img class="cursor-pointer" [src]="product.subImages[1].url" />
-                    </div>
-
-                    <div>
-                        <img class="cursor-pointer" [src]="product.subImages[2].url" />
-                    </div>
-
-                    <div>
-                        <img class="cursor-pointer" [src]="product.subImages[3].url" />
-                    </div>
-                </div>
-                <!-- /image gallery  -->
-            </div>
-
-            <!-- description  -->
-
-            <div class="mx-auto px-5 lg:px-5">
-                <h2 class="pt-3 text-2xl font-bold lg:pt-0 dark:text-white">{{product.name}}</h2>
-                <div class="mt-1">
-                    <div class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                            class="h-4 w-4 text-yellow-400">
-                            <path fill-rule="evenodd"
-                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                clip-rule="evenodd" />
-                        </svg>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                            class="h-4 w-4 text-yellow-400">
-                            <path fill-rule="evenodd"
-                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                clip-rule="evenodd" />
-                        </svg>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                            class="h-4 w-4 text-yellow-400">
-                            <path fill-rule="evenodd"
-                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                clip-rule="evenodd" />
-                        </svg>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                            class="h-4 w-4 text-yellow-400">
-                            <path fill-rule="evenodd"
-                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                clip-rule="evenodd" />
-                        </svg>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                            class="h-4 w-4 text-gray-200">
-                            <path fill-rule="evenodd"
-                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                clip-rule="evenodd" />
-                        </svg>
-
-                        <p class="ml-3 text-sm text-gray-400 dark:text-white">(150 reviews)</p>
-                    </div>
-                </div>
-
-                <p class="mt-5 font-bold dark:text-white">
-                    Availability: {{product.stock}} <span class="text-green-600" *ngIf="product.stock>0">(In
-                        Stock)</span>
-                    <span class="text-red-600" *ngIf="product.stock<0">(Out of Stock)</span>
-                </p>
-                <p class="font-bold dark:text-white">Updated At: <span
-                        class="font-normal dark:text-white">{{product.updatedAt | date}}</span>
-                </p>
-                <p class="font-bold dark:text-white">
-                    Category: <span class="font-normal dark:text-white capitalize">{{ categoryName}}</span>
-                </p>
-                <p class="font-bold dark:text-white">
-                    Created At: <span class="font-normal dark:text-white">{{ product.createdAt | date}}</span>
-                </p>
-
-                <p class="mt-4 text-4xl font-bold text-blue-700 dark:text-white">
-                    ₹{{product.price}} <span class="text-xs text-gray-400 dark:text-gray-200 line-through">
-                        ₹{{product.price+200}}</span>
-                </p>
-
-                <p class="pt-5 text-sm leading-5 text-gray-500 dark:text-gray-300">
-                    {{product.description}}
-                </p>
-
-
-
-                <div class="mt-6">
-                    <p class="pb-2 text-xs text-gray-500 dark:text-white">Quantity</p>
-
-                    <div class="flex">
-                        <button (click)="decrement()"
-                            class="flex h-8 w-8 cursor-pointer items-center justify-center border duration-100 hover:bg-neutral-100 dark:hover:text-black  dark:text-white focus:ring-2 focus:ring-gray-500 active:ring-2 active:ring-gray-500">
-                            &minus;
-                        </button>
-                        <div
-                            class="flex h-8 w-8 cursor-text items-center justify-center border-t border-b dark:text-white active:ring-gray-500">
-                            {{count}}
+                    <div class="mt-4 grid grid-cols-4 gap-4">
+                        <div *ngFor="let subImage of product.subImages.slice(0, 4)"
+                            class="aspect-w-1 aspect-h-1 rounded-md overflow-hidden">
+                            <img [src]="subImage.url" alt="Product thumbnail"
+                                class="object-cover w-full h-full cursor-pointer hover:opacity-75 transition-opacity duration-200">
                         </div>
-                        <button (click)="increment()"
-                            class="flex h-8 w-8 cursor-pointer items-center justify-center border duration-100  hover:bg-neutral-100 dark:text-white dark:hover:text-black  focus:ring-2 focus:ring-gray-500 active:ring-2 active:ring-gray-500">
-                            &#43;
-                        </button>
                     </div>
                 </div>
 
-                <div class="mt-7 flex flex-col items-left gap-6 ">
-                    <button (click)="addtoCart(product._id)"
-                        class="flex h-12 w-1/3 items-center justify-center bg-blue-700 text-white duration-100 hover:bg-blue-800  rounded-lg px-1 ">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="mr-3 h-4 w-4">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                        </svg>
+                <!-- Product details -->
+                <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col">
+                    <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mb-4">{{product.name}}
+                    </h1>
 
-                        Add to cart
-                    </button>
-                    <button routerLink="/checkout"
-                        class="flex h-12 w-1/3 items-center justify-center bg-amber-400 duration-100 hover:bg-yellow-300 rounded-lg ">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-400">
+                            <svg *ngFor="let i of [1,2,3,4,5]" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                </path>
+                            </svg>
+                        </div>
+                        <p class="ml-2 text-sm text-gray-600 dark:text-gray-400">(150 reviews)</p>
+                    </div>
 
+                    <p class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-6">
+                        ₹{{product.price}}
+                        <span
+                            class="text-lg text-gray-400 dark:text-gray-500 line-through ml-2">₹{{product.price+200}}</span>
+                    </p>
 
-                        CheckOut
-                    </button>
+                    <p class="text-gray-600 dark:text-gray-300 mb-8">{{product.description}}</p>
+
+                    <div class="space-y-4 mb-8">
+                        <p class="flex justify-between text-sm">
+                            <span class="text-gray-500 dark:text-gray-400">Availability</span>
+                            <span [ngClass]="{'text-green-600': product.stock > 0, 'text-red-600': product.stock <= 0}">
+                                {{product.stock > 0 ? 'In Stock' : 'Out of Stock'}} ({{product.stock}})
+                            </span>
+                        </p>
+                        <p class="flex justify-between text-sm">
+                            <span class="text-gray-500 dark:text-gray-400">Category</span>
+                            <span class="text-gray-900 dark:text-gray-100">{{categoryName}}</span>
+                        </p>
+                        <p class="flex justify-between text-sm">
+                            <span class="text-gray-500 dark:text-gray-400">Updated</span>
+                            <span class="text-gray-900 dark:text-gray-100">{{product.updatedAt | date}}</span>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center mb-8">
+                        <span class="mr-3 text-gray-700 dark:text-gray-300">Quantity</span>
+                        <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-md">
+                            <button (click)="decrement()"
+                                class="px-3 py-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">−</button>
+                            <span
+                                class="px-3 py-1 text-gray-800 dark:text-gray-200 border-x border-gray-300 dark:border-gray-600">{{count}}</span>
+                            <button (click)="increment()"
+                                class="px-3 py-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">+</button>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-4 mt-auto">
+                        <button (click)="addtoCart(product._id)"
+                            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            Add to cart
+                        </button>
+                        <button routerLink="/checkout"
+                            class="flex-1 bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold py-3 px-6 rounded-lg transition duration-200">
+                            Buy Now
+                        </button>
+                    </div>
                 </div>
             </div>
-        </section>
+            <div class="absolute top-0 right-2 -mt-4 -mr-4 w-32 h-32 bg-blue-200 opacity-30 rounded-full transform rotate-45
+            dark:bg-blue-700">
+            </div>
+            <!-- <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-200 opacity-30 rounded-full transform rotate-45
+            dark:bg-blue-700">
+            </div> -->
+            <div
+                class="absolute bottom-0 left-0 -mb-4 -ml-4 w-16 h-16 bg-indigo-200 opacity-30 rounded-full dark:bg-indigo-700">
+            </div>
 
+        </div>
 
     </main>
 </ng-container>
