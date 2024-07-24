@@ -1,24 +1,75 @@
 <div
-    class="w-full mx-auto max-w-sm bg-white border border-gray-300 rounded-lg shadow-lg hover:shadow-slate-700 hover:shadow-2xl transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-200">
-    <div routerLink="/products/{{categoryName}}/{{product._id}}">
-        <img class="rounded-t-lg" [src]="product.mainImage.url" alt="product image" />
+    class="w-full mx-auto max-w-sm overflow-hidden shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.8)]
+    dark:shadow-[0_0_15px_rgba(29,78,216,0.5)] dark:hover:shadow-[0_0_30px_rgba(29,78,216,0.8)] rounded-2xl  transition-all duration-300 ease-in-out  hover:scale-105 bg-white dark:bg-gray-800 border border-blue-100 dark:border-blue-900">
+    <div class="relative group" routerLink="/products/{{categoryName}}/{{product._id}}">
+        <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 "
+            [src]="product.mainImage.url" alt="product image Loading..." />
+        <!-- <div
+            class="absolute inset-1 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        </div> -->
     </div>
-    <div class="p-5 pb-5">
-        <div routerLink="/products/{{categoryName}}/{{product._id}}">
-            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{product.name}}</h5>
+
+    <div class="p-6 relative">
+        <div
+            class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-200 opacity-30 rounded-full transform rotate-45 dark:bg-blue-700">
         </div>
-        <div class="flex items-center mt-2.5 mb-5" routerLink="/product/{{product._id}}">
-            <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                <h5 class="text-sm font-semibold tracking-tight text-gray-500 dark:text-white">Stock Remaining:</h5>
+
+        <div routerLink="/products/{{categoryName}}/{{product._id}}" class="relative">
+            <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white mb-2">{{product.name}}</h5>
+        </div>
+
+        <div class="flex items-center justify-between mb-4 relative" routerLink="/product/{{product._id}}">
+            <div class="flex items-center space-x-2">
+                <h5 class="text-sm font-semibold text-gray-600 dark:text-gray-300">Stock:</h5>
+                <span
+                    class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-200">
+                    {{product.stock}}
+                </span>
             </div>
-            <span
-                class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{{product.stock}}</span>
         </div>
-        <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-900 dark:text-white">₹{{product.price}}</span>
-            <div pRipple (click)="addtoCart(product)"
-                class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Add to cart</div>
+
+        <div class="flex items-center justify-between relative">
+            <span class="text-3xl font-extrabold text-blue-600 dark:text-blue-400">₹{{product.price}}</span>
+            <button pRipple (click)="addtoCart(product)"
+                class="text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center transition-all duration-300 ease-in-out transform hover:scale-105 dark:focus:ring-blue-800">
+                Add to cart
+            </button>
         </div>
     </div>
 </div>
+
+
+<!-- <div class="w-full mx-auto max-w-sm overflow-hidden rounded-2xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 bg-white dark:bg-gray-800 border border-blue-100 dark:border-blue-900">
+    <div class="relative aspect-w-1 aspect-h-1 overflow-hidden" routerLink="/products/{{categoryName}}/{{product._id}}">
+      <img class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" 
+           [src]="product.mainImage.url" 
+           alt="product image" 
+           style="object-position: center;">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+    </div>
+    
+    <div class="p-6 relative">
+      <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-200 opacity-30 rounded-full transform rotate-45 dark:bg-blue-700"></div>
+      
+      <div routerLink="/products/{{categoryName}}/{{product._id}}" class="relative">
+        <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 line-clamp-2">{{product.name}}</h5>
+      </div>
+      
+      <div class="flex items-center justify-between mb-4 relative" routerLink="/product/{{product._id}}">
+        <div class="flex items-center space-x-2">
+          <h5 class="text-sm font-semibold text-gray-600 dark:text-gray-300">Stock:</h5>
+          <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-200">
+            {{product.stock}}
+          </span>
+        </div>
+      </div>
+      
+      <div class="flex items-center justify-between relative">
+        <span class="text-3xl font-extrabold text-blue-600 dark:text-blue-400">₹{{product.price}}</span>
+        <button pRipple (click)="addtoCart(product)"
+                class="text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center transition-all duration-300 ease-in-out transform hover:scale-105 dark:focus:ring-blue-800">
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div> -->

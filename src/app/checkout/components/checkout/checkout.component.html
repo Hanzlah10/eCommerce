@@ -1,4 +1,4 @@
-<section *ngIf="TotalData$|async as data" class="bg-white py-3 antialiased dark:bg-black md:py-5">
+<section *ngIf="TotalData$|async as data" class="bg-white py-3 antialiased dark:bg-black md:py-5 ">
     <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
         <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16">
             <div class="min-w-0 flex-1 space-y-8">
@@ -86,13 +86,12 @@
                             class="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
                             <div class="flex items-start">
                                 <div class="flex h-5 items-center">
-                                    <input id="address" aria-describedby="address-text" type="radio" value=""
-                                        name="address" [checked]="address == data.AddressState[0] ? true : false"
-                                        class="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
+                                    <input id="address-{{address._id}}" aria-describedby="address-text" type="radio"
+                                        value="" name="address" [checked]="address == data.AddressState[0]"
+                                        class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-blue-500 checked:bg-blue-600 checked:border-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-blue-500" />
                                 </div>
-
                                 <div class="ms-4 text-sm">
-                                    <label for="razor-pay"
+                                    <label for="address-{{address._id}}"
                                         class="font-medium leading-none text-gray-900 dark:text-white">
                                         {{address.city}}
                                     </label>
@@ -102,17 +101,15 @@
                                     </p>
                                 </div>
                             </div>
-
                             <div class="mt-4 flex items-center gap-2">
                                 <button type="button" (click)="deleteAddress(address._id)"
                                     class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">Delete</button>
-
                                 <div class="h-3 w-px shrink-0 bg-gray-200 dark:bg-gray-700"></div>
-
                                 <button type="button" (click)="editAddress(address._id)"
                                     class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">Edit</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -132,7 +129,7 @@
                                     <div class="flex h-5 items-center">
                                         <input id="credit-card" aria-describedby="credit-card-text" type="radio"
                                             name="payment-method" value=""
-                                            class="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                                            class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-blue-500 checked:bg-blue-600 checked:border-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-blue-500"
                                             checked />
                                     </div>
 
@@ -142,8 +139,7 @@
                                         </label>
                                         <p id="razor-pay-text"
                                             class="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400">Pay with
-                                            Razor
-                                            Pay</p>
+                                            Razor Pay</p>
                                     </div>
                                 </div>
 
@@ -164,7 +160,7 @@
                                     <div class="flex h-5 items-center">
                                         <input id="pay-on-delivery" aria-describedby="pay-on-delivery-text" type="radio"
                                             name="payment-method" value=""
-                                            class="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
+                                            class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-blue-500 checked:bg-blue-600 checked:border-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-blue-500" />
                                     </div>
 
                                     <div class="ms-4 text-sm">
@@ -173,8 +169,7 @@
                                             delivery </label>
                                         <p id="pay-on-delivery-text"
                                             class="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400">+$15
-                                            payment
-                                            processing fee</p>
+                                            payment processing fee</p>
                                     </div>
                                 </div>
 
@@ -195,32 +190,35 @@
                                     <div class="flex h-5 items-center">
                                         <input id="paypal-2" aria-describedby="paypal-text" type="radio"
                                             name="payment-method" value=""
-                                            class="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
+                                            class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-blue-500 checked:bg-blue-600 checked:border-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-blue-500" />
                                     </div>
-
                                     <div class="ms-4 text-sm">
                                         <label for="paypal-2"
-                                            class="font-medium leading-none text-gray-900 dark:text-white"> Paypal
-                                            account
+                                            class="font-medium leading-none text-gray-900 dark:text-white">
+                                            Paypal account
                                         </label>
                                         <p id="paypal-text"
-                                            class="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400">Connect to
-                                            your account</p>
+                                            class="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400">
+                                            Connect to your account
+                                        </p>
                                     </div>
                                 </div>
-
                                 <div class="mt-4 flex items-center gap-2">
                                     <button type="button"
-                                        class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">Delete</button>
-
+                                        class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                                        Delete
+                                    </button>
                                     <div class="h-3 w-px shrink-0 bg-gray-200 dark:bg-gray-700"></div>
-
                                     <button type="button"
-                                        class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">Edit</button>
+                                        class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                                        Edit
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
 
                     <div>
                         <label for="voucher" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Enter
