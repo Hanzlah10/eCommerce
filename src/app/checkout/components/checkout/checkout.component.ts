@@ -36,7 +36,10 @@ export class CheckoutComponent implements OnInit {
         this.store.dispatch(checkoutActions.getAddress());
     }
 
-    toggleIsAddingAddress() {
+    toggleIsAddingAddress(status?: string) {
+        if (status) {
+            this.formStatus = status
+        }
         this.isAddingAddress = !this.isAddingAddress;
         this.addressToEdit = null
 
@@ -47,6 +50,7 @@ export class CheckoutComponent implements OnInit {
             this.store.dispatch(checkoutActions.updateAddress({ id: this.addressToEditId, address: address }))
             this.addressToEdit = null
         } else {
+
             this.store.dispatch(checkoutActions.addAddress(address))
         }
         this.toggleIsAddingAddress(); // Hide the add address form after submission
