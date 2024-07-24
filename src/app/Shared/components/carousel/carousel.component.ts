@@ -10,11 +10,11 @@ import { Component } from '@angular/core';
 })
 export class CarouselComponent {
   slides = [
-    '../../../../assets/images/sale5.jpg',
-    '../../../../assets/images/sale2.jpg',
-    '../../../../assets/images/sale3.jpg',
-    '../../../../assets/images/sale4.jpg',
-    '../../../../assets/images/sale1.jpg'
+    '../../../../assets/carousel/sale1.webp',
+    '../../../../assets/carousel/sale2.webp',
+    // '../../../../assets/carousel/sale3.webp',
+    '../../../../assets/carousel/sale5.webp',
+    '../../../../assets/carousel/sale4.webp',
   ];
 
   currentSlide = 0;
