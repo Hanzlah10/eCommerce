@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { Form, FormsModule } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { selectCartState } from "../../../cart/store/reducers";
 import { CommonModule } from "@angular/common";
@@ -11,6 +11,7 @@ import { selectAddresses } from "../../store/reducers";
 import { cartActions } from "../../../cart/store/actions";
 import { Address } from "../../types/Address.interface";
 import { AddressService } from "../../services/address.service";
+import { CouponFormInterface } from "../../types/coupon.interface";
 
 @Component({
     selector: 'app-checkout',
@@ -83,6 +84,24 @@ export class CheckoutComponent implements OnInit {
 
     deleteAddress(id: string) {
         this.store.dispatch(checkoutActions.deleteAddress({ id }))
+    }
+
+    applyCoupon(CouponForm: CouponFormInterface) {
+        this.store.dispatch(checkoutActions.applyCoupon({ id: CouponForm.coupon }))
+    }
+
+
+
+    appliedCoupon: any = {
+        name: 'Summer Sale',
+        code: 'SUMMER2024',
+        startDate: new Date('2024-06-01'),
+        endDate: new Date('2024-08-31')
+    };
+
+    removeCoupon() {
+        // Implement the logic to remove the coupon
+        this.appliedCoupon = null;
     }
 
 

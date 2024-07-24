@@ -5,6 +5,7 @@ import { checkoutActions } from "./actions";
 import { catchError, map, of, switchMap } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { MessageService } from "primeng/api";
+import { CouponService } from "../services/coupon.service";
 
 export const AddAddressEffects = createEffect(
     (
@@ -46,8 +47,6 @@ export const GetAddressEffects = createEffect(
             switchMap(() => {
                 return addressService.getAddress().pipe(
                     map((response) => {
-
-
                         return checkoutActions.getAddressSuccess(response)
                     }),
                     catchError((e: HttpErrorResponse) => (
@@ -106,9 +105,40 @@ export const deleteAddressEffect = createEffect(
             switchMap(({ id }) => {
                 return addressService.deleteAddress(id).pipe(
                     map((response) => {
-                        messageService.add({ severity: 'error', summary: 'Deleted Address', detail: 'Deleted Address successfully', life: 800 });
+                        messageService.add({ severity: 'error', summary: 'Deleted Address', detail: 'Deleted Address Successfully', life: 800 });
 
                         return checkoutActions.deleteAddressSuccess(response)
+                    }),
+                    catchError((e: HttpErrorResponse) => (
+                        of(
+                            checkoutActions.deleteAddressFailure(e.error)
+                        )
+                    ))
+                )
+            })
+        )
+    },
+    {
+        functional: true
+    }
+)
+export const applyCouponEffect = createEffect(
+    (
+        actions$ = inject(Actions),
+        messageService = inject(MessageService),
+        couponService = inject(CouponService)
+
+
+    ) => {
+        return actions$.pipe(
+            ofType(checkoutActions.applyCoupon),
+            switchMap((data) => {
+                return couponService.applyCoupon(data.id).pipe(
+                    map((response) => {
+                        console.log(response);
+                        messageService.add({ severity: 'success', summary: 'Coupon Applied', detail: 'Coupon Applied Successfully', life: 800 });
+
+                        return checkoutActions.applyCouponSuccess(response)
                     }),
                     catchError((e: HttpErrorResponse) => (
                         of(

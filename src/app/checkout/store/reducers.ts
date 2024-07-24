@@ -32,7 +32,9 @@ const CheckoutFeature = createFeature({
         on(checkoutActions.deleteAddressSuccess, (state, action) => ({
             ...state,
             addresses: state.addresses.filter(address => address._id != action.deletedAddress._id)
-        }))
+        })),
+
+
     )
 })
 

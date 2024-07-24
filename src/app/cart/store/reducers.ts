@@ -1,12 +1,14 @@
 import { createFeature, createReducer, on } from "@ngrx/store"
 import { cartActions } from "./actions"
 import { cartStateInterface } from "../types/cartState.interface"
+import { checkoutActions } from "../../checkout/store/actions"
 
 const initialState: cartStateInterface = {
     cartTotal: 0,
     discountedTotal: 0,
     errors: null,
-    items: []
+    items: [],
+    coupon: undefined
 }
 
 const cartFeature = createFeature({
@@ -37,6 +39,13 @@ const cartFeature = createFeature({
             items: action.items,
             cartTotal: action.cartTotal,
             discountedTotal: action.discountedTotal
+        })),
+        on(checkoutActions.applyCouponSuccess, (state, action) => ({
+            ...state,
+            items: action.items,
+            cartTotal: action.cartTotal,
+            discountedTotal: action.discountedTotal,
+            coupon: action.coupon
         })),
     )
 })

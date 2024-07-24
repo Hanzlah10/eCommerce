@@ -1,72 +1,68 @@
-<nav class=" mx-auto max-w-screen-xl px-4 2xl:px-0 py-7">
-    <ul class="flex items-center">
-        <li class="cursor-pointer">
-            <a routerLink="/">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                    class="h-5 w-5 dark:text-white">
-                    <path
-                        d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-                    <path
-                        d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                </svg>
-            </a>
-        </li>
-        <li>
-            <span class="mx-2 text-gray-500">&gt;</span>
-        </li>
-        <li class="text-gray-500 capitalize dark:text-white">
-            Checkout
-        </li>
-
-    </ul>
-</nav>
-<section *ngIf="TotalData$|async as data" class="bg-white py-8 antialiased dark:bg-black md:py-12">
-
-    <form action="#" class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-
-        <ol
-            class="items-center flex w-full max-w-2xl text-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">
-            <li
-                class="after:border-1 flex items-center text-primary-700 after:mx-6 after:hidden after:h-1 after:w-full after:border-b after:border-gray-200 dark:text-primary-500 dark:after:border-gray-700 sm:after:inline-block sm:after:content-[''] md:w-full xl:after:mx-10">
-                <span
-                    class="flex items-center after:mx-2 after:text-gray-200 after:content-['/'] dark:after:text-gray-500 sm:after:hidden">
-                    <svg class="me-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="green" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                    Cart
-                </span>
-            </li>
-
-            <li
-                class="after:border-1 flex items-center text-primary-700 after:mx-6 after:hidden after:h-1 after:w-full after:border-b after:border-gray-200 dark:text-primary-500 dark:after:border-gray-700 sm:after:inline-block sm:after:content-[''] md:w-full xl:after:mx-10">
-                <span
-                    class="flex items-center after:mx-2 after:text-gray-200 after:content-['/'] dark:after:text-gray-500 sm:after:hidden">
-                    <svg class="me-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="orange" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                    Checkout
-                </span>
-            </li>
-
-            <li class="flex shrink-0 items-center">
-                <svg class="me-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                    height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
-                Order summary
-            </li>
-        </ol>
-
+<section *ngIf="TotalData$|async as data" class="bg-white py-3 antialiased dark:bg-black md:py-5">
+    <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
         <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16">
             <div class="min-w-0 flex-1 space-y-8">
+                <nav class=" mx-auto max-w-screen-xl px-4 2xl:px-0 ">
+                    <ul class="flex items-center">
+                        <li class="cursor-pointer">
+                            <a routerLink="/">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="h-5 w-5 dark:text-white">
+                                    <path
+                                        d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                                    <path
+                                        d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="mx-2 text-gray-500">&gt;</span>
+                        </li>
+                        <li class="text-gray-500 capitalize dark:text-white">
+                            Checkout
+                        </li>
 
+                    </ul>
+                </nav>
+                <ol
+                    class="items-center flex w-full max-w-2xl text-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">
+                    <li
+                        class="after:border-1 flex items-center text-primary-700 after:mx-6 after:hidden after:h-1 after:w-full after:border-b after:border-gray-200 dark:text-primary-500 dark:after:border-gray-700 sm:after:inline-block sm:after:content-[''] md:w-full xl:after:mx-10">
+                        <span
+                            class="flex items-center after:mx-2 after:text-gray-200 after:content-['/'] dark:after:text-gray-500 sm:after:hidden">
+                            <svg class="me-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="green" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                            Cart
+                        </span>
+                    </li>
 
+                    <li
+                        class="after:border-1 flex items-center text-primary-700 after:mx-6 after:hidden after:h-1 after:w-full after:border-b after:border-gray-200 dark:text-primary-500 dark:after:border-gray-700 sm:after:inline-block sm:after:content-[''] md:w-full xl:after:mx-10">
+                        <span
+                            class="flex items-center after:mx-2 after:text-gray-200 after:content-['/'] dark:after:text-gray-500 sm:after:hidden">
+                            <svg class="me-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="orange" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                            Checkout
+                        </span>
+                    </li>
 
+                    <li class="flex shrink-0 items-center">
+                        <svg class="me-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        Order summary
+                    </li>
+                </ol>
                 <div class="space-y-4">
                     <div class="flex items-center gap-10">
 
@@ -230,12 +226,81 @@
                         <label for="voucher" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Enter
                             a
                             gift card, voucher or promotional code </label>
-                        <div class="flex max-w-md items-center gap-4">
-                            <input type="text" id="voucher"
+                        <form class="flex max-w-md items-center gap-4" #couponForm="ngForm">
+                            <input type="text" id="voucher" name="coupon" ngModel
                                 class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                                 placeholder="" required />
-                            <button type="button"
+                            <button type="button" (click)="applyCoupon(couponForm.value)"
                                 class="flex items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-400">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Applied Coupons</h3>
+                    <div *ngIf="appliedCoupon"
+                        class="mt-4 p-4 bg-blue-50 dark:bg-blue-900 rounded-lg border-2 border-dashed border-blue-300 dark:border-blue-600 relative overflow-hidden">
+                        <!-- Background pattern -->
+                        <div class="absolute inset-0 opacity-10 dark:opacity-20">
+                            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"
+                                fill="currentColor">
+                                <path
+                                    d="M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95a10 10 0 0 0-2 0V16zm-3-6a2 2 0 1 0-4 0 2 2 0 0 0 4 0z" />
+                            </svg>
+                        </div>
+
+                        <!-- Coupon content -->
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-blue-700 dark:text-blue-300">{{ appliedCoupon.name }}
+                                </h3>
+                                <button (click)="removeCoupon()"
+                                    class="text-blue-500 hover:text-blue-600 dark:text-blue-300 dark:hover:text-blue-200">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="mt-2 flex items-center space-x-2">
+                                <span
+                                    class="px-2 py-1 bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-200 rounded-md font-mono text-sm">{{
+                                    appliedCoupon.code }}</span>
+                                <span class="text-sm text-blue-600 dark:text-blue-300">Copied to clipboard</span>
+                            </div>
+
+                            <div class="mt-3 text-sm text-blue-600 dark:text-blue-300">
+                                <p>Valid from {{ appliedCoupon.startDate | date:'mediumDate' }} to {{
+                                    appliedCoupon.endDate | date:'mediumDate' }}</p>
+                            </div>
+
+                            <div class="mt-3 text-xs text-blue-500 dark:text-blue-400">
+                                <p>{{ appliedCoupon.description }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Decorative elements -->
+                        <div
+                            class="absolute -left-4 top-1/2 w-8 h-8 bg-white dark:bg-gray-800 rounded-full transform -translate-y-1/2">
+                        </div>
+                        <div
+                            class="absolute -right-4 top-1/2 w-8 h-8 bg-white dark:bg-gray-800 rounded-full transform -translate-y-1/2">
+                        </div>
+                    </div>
+                    <div *ngIf="!appliedCoupon">
+                        <div
+                            class="mt-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-blue-700 rounded-lg border border-blue-200 dark:border-blue-700 shadow-sm">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-8 h-8 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
+                                    </path>
+                                </svg>
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">No Coupon Applied</h3>
+                            </div>
+                            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Apply a coupon code to get
+                                discounts on your order!</p>
                         </div>
                     </div>
                 </ng-container>
@@ -330,5 +395,5 @@
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </section>

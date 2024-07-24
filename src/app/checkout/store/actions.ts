@@ -2,6 +2,7 @@ import { createActionGroup, emptyProps, props } from "@ngrx/store";
 import { Address, AddressInterface, DeletedAddressInterface } from "../types/Address.interface";
 import { BackendErrorsInterface } from "../../Shared/types/backendErrors.interface";
 import { PaginatedAddressesInterface } from "../types/paginatedAddresses.interface";
+import { CartInterface } from "../../cart/types/cart.interface";
 
 export const checkoutActions = createActionGroup({
     source: 'CheckoutActions',
@@ -18,5 +19,9 @@ export const checkoutActions = createActionGroup({
         'Delete Address': props<{ id: string | null }>(),
         'Delete Address Success': props<DeletedAddressInterface>(),
         'Delete Address Failure': props<BackendErrorsInterface>(),
+        'Apply Coupon': props<{ id: string | null }>(),
+        'Apply Coupon Success': props<CartInterface>(),
+        'Apply Coupon Failure': props<BackendErrorsInterface>(),
+
     }
 })
