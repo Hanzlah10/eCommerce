@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { selectCurrentUser } from '../../../auth/store/reducers';
 import { Store } from '@ngrx/store';
@@ -17,16 +17,18 @@ import { PrimengModule } from '../../../Modules/primeng.module';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  @ViewChild('userDropdown') userDropdown!: ElementRef;
+  @ViewChild('userMenuButton') userMenuButton!: ElementRef;
 
+  isCartVisible = false;
+  showDropDown = false;
+  mobileMenuOpen = false;
 
-  isCartVisible = false
-  showDropDown = false
-  mobileMenuOpen = false
-  constructor(private store: Store) { }
+  constructor(private store: Store, private elementRef: ElementRef) { }
 
   data$ = combineLatest({
     currentUser: this.store.select(selectCurrentUser)
-  })
+  });
 
   toggleCart() {
     this.isCartVisible = !this.isCartVisible;
@@ -37,14 +39,22 @@ export class NavbarComponent {
   }
 
   signOut() {
-    this.store.dispatch(authActions.logout())
-    this.toggleDropDown()
+    this.store.dispatch(authActions.logout());
+    this.toggleDropDown();
   }
 
-  toggleDropDown() {
-    this.showDropDown = !this.showDropDown
+  toggleDropDown(event?: Event) {
+    event?.stopPropagation();
+    this.showDropDown = !this.showDropDown;
   }
 
-
-
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (this.showDropDown) {
+      const targetElement = event.target as HTMLElement;
+      if (!this.elementRef.nativeElement.contains(targetElement)) {
+        this.showDropDown = false;
+      }
+    }
+  }
 }
