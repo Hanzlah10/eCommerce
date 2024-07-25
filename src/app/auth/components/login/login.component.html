@@ -1,76 +1,104 @@
 <ng-container *ngIf="$data | async as data">
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 dark:bg-black">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img class="mx-auto h-10 w-auto" src="https://flowbite.com/docs/images/logo.svg" alt="Your Company">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">Sign
-                in to your
-                account
-            </h2>
+    <div
+        class="min-h-screen flex items-center justify-center -mb-6 lg:-mb-8 -mt-8 px-4 sm:px-6  lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900 relative overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div
+                class="absolute left-1/4 top-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob">
+            </div>
+            <div
+                class="absolute right-1/4 bottom-0 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000">
+            </div>
+            <div
+                class="absolute left-1/2 top-1/2 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000">
+            </div>
         </div>
 
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm ">
-            <form class="space-y-6 border border-dashed border-slate-300 px-8 py-8 rounded-lg" [formGroup]="form">
-                <div>
-                    <label for="username"
-                        class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Username</label>
-                    <div class="mt-2">
+        <div
+            class="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-10 rounded-xl shadow-2xl transform transition-all relative z-10">
+            <div>
+                <img class="mx-auto h-12 w-auto" src="https://flowbite.com/docs/images/logo.svg" alt="Your Company">
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">Sign in to your
+                    account</h2>
+            </div>
+            <form class="mt-8 space-y-6" [formGroup]="form">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div>
+                        <label for="username" class="sr-only">Username</label>
                         <input id="username" name="username" type="username" autocomplete="username" required
                             formControlName="username"
-                            class="block w-full  px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
-
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                            placeholder="Username">
+                    </div>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input id="password" name="password" type="password" autocomplete="current-password" required
+                            formControlName="password"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                            placeholder="Password">
                     </div>
                 </div>
 
-                <div>
-                    <div class="flex items-center justify-between">
-                        <label for="password"
-                            class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Password</label>
-                        <div class="text-sm">
-                            <a class=" font-semibold text-blue-600 hover:text-blue-500  hover:underline cursor-pointer"
-                                data-popover-target="popover-image" data-popover-placement="top"
-                                (mouseover)="showPopover()" (mouseleave)="delayedHidePopover()"  >Forgot Password?</a>
-                        </div>
-                    </div>
-                    <div *ngIf=" isPopoverVisible" id="popover-image" role="tooltip"
-                        class="absolute z-10 inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm w-96 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600"
-                        (mouseover)="showPopover()" (mouseleave)="hidePopover()">
-                        <div
-                            class="p-4 space-y-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-black dark:border-gray-600">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Reset Password</h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Enter your email address to receive a
-                                password reset link.</p>
-                            <div class="flex space-x-2">
-                                <input type="text" [formControl]="email"
-                                    class="flex-1 p-2 border border-gray-300 rounded-l-lg focus:ring focus:ring-blue-200 focus:border-blue-500 dark:bg-black dark:border-gray-600 dark:text-white"
-                                    placeholder="Enter your email">
-                                <button (click)="forgotPassword()"
-                                    class="p-2 font-semibold text-white bg-blue-600 rounded-r-lg hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600">Submit</button>
-                            </div>
-                        </div>
-
-
-                        <div data-popper-arrow></div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox"
+                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-900 dark:text-gray-300">Remember
+                            me</label>
                     </div>
 
-                    <div class="mt-2">
-                        <input id="password" name="password" type="password" autocomplete="current-password" required
-                            formControlName="password"
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                    <div class="text-sm">
+                        <a class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 cursor-pointer"
+                            data-popover-target="popover-image" data-popover-placement="top" (mouseover)="showPopover()"
+                            (mouseleave)="delayedHidePopover()">
+                            Forgot Password?
+                        </a>
                     </div>
                 </div>
 
                 <div>
                     <button [disabled]="data.isSubmitting$" (click)="onSubmit()"
-                        class="flex w-full justify-center rounded-md bg-blue-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-blue-600">Sign
-                        in</button>
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                        Sign in
+                    </button>
                 </div>
             </form>
-            <!-- <p-toast /> -->
-            <p class="mt-10 text-center text-sm text-gray-500">
-                Don't have an account ?
-                <a href="#" class="font-semibold leading-6 text-blue-700 hover:text-blue-500"
-                    routerLink="/register">Register Here !</a>
+
+            <p class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+                Don't have an account?
+                <a routerLink="/register"
+                    class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+                    Register Here!
+                </a>
             </p>
         </div>
+
+        <!-- Popover for Forgot Password -->
+        <div *ngIf="isPopoverVisible" id="popover-image" role="tooltip"
+            class="absolute z-50 inline-block p-4 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm w-72 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600"
+            (mouseover)="showPopover()" (mouseleave)="hidePopover()">
+            <div class="space-y-2">
+                <h3 class="font-semibold text-gray-900 dark:text-white">Reset Password</h3>
+                <p class="text-xs">Enter your email address to receive a password reset link.</p>
+                <input type="email" [formControl]="email"
+                    class="w-full p-2 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    placeholder="Enter your email">
+                <button (click)="forgotPassword()"
+                    class="w-full p-2 text-sm font-semibold text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+                    Submit
+                </button>
+                <div data-popper-arrow></div>
+            </div>
+        </div>
     </div>
+
 </ng-container>
