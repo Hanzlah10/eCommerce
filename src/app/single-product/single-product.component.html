@@ -9,7 +9,7 @@
                             d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                         <path
                             d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                    </svg><a href="/" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+                    </svg><a routerLink="/" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a>
                 </li>
                 <li class="flex items-center">
                     <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
@@ -17,7 +17,7 @@
                             d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                             clip-rule="evenodd"></path>
                     </svg>
-                    <a href="" class="hover:text-blue-600 dark:hover:text-blue-400 capitalize">{{categoryName}}</a>
+                    <a class="hover:text-blue-600 dark:hover:text-blue-400 capitalize">{{categoryName}}</a>
                 </li>
                 <li class="flex items-center">
                     <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
@@ -104,7 +104,7 @@
 
                     <div class="flex space-x-4 mt-auto">
                         <button (click)="addtoCart(product._id)"
-                            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 flex items-center justify-center">
+                            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold transition duration-200 py-3 px-6 rounded-lg  flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
