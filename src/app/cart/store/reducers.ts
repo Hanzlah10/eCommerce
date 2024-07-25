@@ -2,6 +2,7 @@ import { createFeature, createReducer, on } from "@ngrx/store"
 import { cartActions } from "./actions"
 import { cartStateInterface } from "../types/cartState.interface"
 import { checkoutActions } from "../../checkout/store/actions"
+import { authActions } from "../../auth/store/actions"
 
 const initialState: cartStateInterface = {
     cartTotal: 0,
@@ -54,6 +55,13 @@ const cartFeature = createFeature({
             discountedTotal: action.discountedTotal,
             coupon: action.coupon
         })),
+        on(authActions.logout, (state) => ({
+            ...state,
+            items: [],
+            cartTotal: 0,
+            discountedTotal: 0,
+            coupon: undefined
+        }))
     )
 })
 

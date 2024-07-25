@@ -2,28 +2,31 @@
     <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
         <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16">
             <div class="min-w-0 flex-1 space-y-8">
-                <nav class=" mx-auto max-w-screen-xl px-4 2xl:px-0 ">
-                    <ul class="flex items-center">
-                        <li class="cursor-pointer">
-                            <a routerLink="/">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="h-5 w-5 dark:text-white">
-                                    <path
-                                        d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-                                    <path
-                                        d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                                </svg>
-                            </a>
+                <nav class="max-w-7xl mx-auto mb-8">
+                    <ol class="flex items-center  space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex items-center gap-1"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="h-5 w-5 dark:text-white">
+                                <path
+                                    d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                                <path
+                                    d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                            </svg><a routerLink="/"
+                                class=" font-semibold hover:text-blue-600 dark:hover:text-blue-400">Home</a>
                         </li>
-                        <li>
-                            <span class="mx-2 text-gray-500">&gt;</span>
-                        </li>
-                        <li class="text-gray-500 capitalize dark:text-white">
-                            Checkout
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <a
+                                class="font-semibold hover:text-blue-600 dark:hover:text-blue-400 capitalize">Checkout</a>
                         </li>
 
-                    </ul>
+                    </ol>
                 </nav>
+
+
                 <ol
                     class="items-center flex w-full max-w-2xl text-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">
                     <li
@@ -66,9 +69,9 @@
                 <div class="space-y-4">
                     <div class="flex items-center gap-10">
 
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Your Addresses </h3>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Your Addresses </h3>
                         <button (click)="toggleIsAddingAddress('Add')"
-                            class="flex  items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-2 py-1 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
+                            class="flex  items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-2 py-1 text-sm font-bold text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
                             <svg *ngIf="!isAddingAddress" class="h-5 w-5" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
@@ -83,7 +86,8 @@
 
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                         <div *ngFor="let address of data.AddressState"
-                            class="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+                            class="rounded-lg  bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800 transition-shadow shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.8)]
+                            dark:shadow-[0_0_15px_rgba(29,78,216,0.5)] dark:hover:shadow-[0_0_30px_rgba(29,78,216,0.8)]  duration-300">
                             <div class="flex items-start">
                                 <div class="flex h-5 items-center">
                                     <input id="address-{{address._id}}" aria-describedby="address-text" type="radio"
@@ -120,11 +124,12 @@
 
                 <ng-template #paymentSection>
                     <div class="space-y-4">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Payment</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Payment</h3>
 
                         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                             <div
-                                class="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+                                class="rounded-lg transition-shadow shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.8)]
+                                dark:shadow-[0_0_15px_rgba(29,78,216,0.5)] dark:hover:shadow-[0_0_30px_rgba(29,78,216,0.8)]  duration-300 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
                                 <div class="flex items-start">
                                     <div class="flex h-5 items-center">
                                         <input id="credit-card" aria-describedby="credit-card-text" type="radio"
@@ -155,7 +160,8 @@
                             </div>
 
                             <div
-                                class="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+                                class="rounded-lg transition-shadow shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.8)]
+                                dark:shadow-[0_0_15px_rgba(29,78,216,0.5)] dark:hover:shadow-[0_0_30px_rgba(29,78,216,0.8)]  duration-300 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
                                 <div class="flex items-start">
                                     <div class="flex h-5 items-center">
                                         <input id="pay-on-delivery" aria-describedby="pay-on-delivery-text" type="radio"
@@ -185,7 +191,8 @@
                             </div>
 
                             <div
-                                class="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+                                class="rounded-lg transition-shadow shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.8)]
+                                dark:shadow-[0_0_15px_rgba(29,78,216,0.5)] dark:hover:shadow-[0_0_30px_rgba(29,78,216,0.8)]  duration-300 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
                                 <div class="flex items-start">
                                     <div class="flex h-5 items-center">
                                         <input id="paypal-2" aria-describedby="paypal-text" type="radio"
@@ -229,7 +236,8 @@
                                 class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                                 placeholder="" required />
                             <button type="button" (click)="applyCoupon(couponForm.value,couponForm)"
-                                class="flex items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-400">Apply</button>
+                                class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white transition-shadow shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.8)]
+                                dark:shadow-[0_0_15px_rgba(29,78,216,0.5)] dark:hover:shadow-[0_0_30px_rgba(29,78,216,0.8)]  duration-300  font-bold rounded-lg  px-5 py-2.5 text-sm   focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-400">Apply</button>
                         </form>
                     </div>
 
@@ -237,7 +245,7 @@
 
 
                     <!-- Coupon -->
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Applied Coupons</h3>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Applied Coupons</h3>
                     <div *ngIf="data.CartState.coupon"
                         class="relative p-4 bg-blue-50 dark:bg-blue-900 rounded-lg border-2 border-dashed border-blue-300 dark:border-blue-600 overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-blue-100 dark:hover:bg-blue-800">
                         <!-- Background pattern -->
@@ -415,7 +423,8 @@
 
                 <div class="space-y-3">
                     <button type="submit"
-                        class="flex w-full items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed
+                        class="flex w-full items-center  justify-center rounded-lg  bg-blue-600 hover:bg-blue-700 text-white   font-bold  px-5 py-2.5 text-sm  hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 transition-shadow shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.8)]
+                        dark:shadow-[0_0_15px_rgba(29,78,216,0.5)] dark:hover:shadow-[0_0_30px_rgba(29,78,216,0.8)]  duration-300">Proceed
                         to Payment</button>
 
                 </div>
