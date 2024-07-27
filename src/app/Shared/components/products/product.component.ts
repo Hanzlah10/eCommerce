@@ -22,4 +22,5 @@ export class productComponent {
     addtoCart(product: ProductInterface) {
         this.store.dispatch(cartActions.addToCart({ productId: product._id, quantity: 1 }))
     }
+
 }   
