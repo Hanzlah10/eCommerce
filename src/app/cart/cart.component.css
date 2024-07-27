@@ -1,0 +1,25 @@
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  
+  @keyframes slideOut {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+  }
+  
+  .slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+  
+  .slide-out {
+    animation: slideOut 0.3s ease-in forwards;
+  }
+  
+  .transition-transform {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
